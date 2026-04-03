@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-
-
 // Simple modular player controller
 
 [RequireComponent(typeof(CharacterController))]
@@ -12,10 +10,14 @@ public class PlayerController : MonoBehaviour
     InputProvider _inputProvider;
     public FPSCameraLook CameraLook;
     public Movement Movement;
-    
+    public GravityAttractee GravAttractee;
+    public GravityAttractionHandler GravityHandler;
 
     private bool _hasControl;
+    private bool _freezePlayer;
     public void SetHasControl(bool value) => _hasControl = value;
+
+    public void SetFreezePlayer(bool value) => _freezePlayer = value;
 
     void Awake()
     {
@@ -23,6 +25,8 @@ public class PlayerController : MonoBehaviour
         _inputProvider = GetComponent<InputProvider>();
         CameraLook = GetComponentInChildren<FPSCameraLook>();    
         Movement = GetComponentInChildren<Movement>();
+        GravAttractee = GetComponent<GravityAttractee>();
+        if(!GravityHandler) GravityHandler = FindAnyObjectByType<GravityAttractionHandler>();
     }
 
     private void Start()
@@ -34,10 +38,15 @@ public class PlayerController : MonoBehaviour
     {
         PlayerInput input = _inputProvider.GetInput();
 
-        if (!_hasControl) return;
+        if (_freezePlayer) return;
+        if(!_hasControl)
+        {
+            input = new PlayerInput { };
+        }
 
+        GravityHandler.UpdateHandler();
         CameraLook.CameraLook(input.look);
-        Movement.UpdateInput(input);
+        Movement.UpdateMovement(input);
     }
     public void TeleportTo(Vector3 position)
     {
