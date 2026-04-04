@@ -19,12 +19,7 @@ public class AirborneState : MovementState
     }
 
     public override void StateFixedUpdate()
-    {
-        if(_movement.Launched && _movement.Player.GravAttractee.CurrentAttractor == _movement.Player.GravAttractee.SuppressedAttactor)
-        {
-            return;
-        }
-
+    {     
         // ---------------------------------------
         // Input movement (local ? world)
         Vector3 movementVector = new Vector3(_movement.MoveInput.x, 0f, _movement.MoveInput.y);

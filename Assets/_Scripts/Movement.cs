@@ -80,6 +80,10 @@ public class Movement : MonoBehaviour
     public bool IsAttracted;
     public GravityAttractor CurrentAttractor;
     public GravityAttractor CurrentlySuppressed;
+    public bool ValidLaunchTarget;
+    public bool CanLaunchDebug;
+    public bool LaunchedDebug;
+    public Vector3 LaunchTargetAttractorPos;
 
     void Awake()
     {
@@ -164,6 +168,10 @@ public class Movement : MonoBehaviour
     {
         // first check for launch
         bool validLaunchTarget = CanLaunchAtAttractor();
+        // dbug
+        ValidLaunchTarget = validLaunchTarget;
+        CanLaunchDebug = CanLaunch;
+        LaunchedDebug = Launched;
         //Debug.Log("Launch Target Visible: " + validLaunchTarget);
         if(_currentInput.jumpHeld && IsGrounded && _canLaunch && validLaunchTarget)
         {
@@ -174,7 +182,7 @@ public class Movement : MonoBehaviour
             Debug.Log("Launched");
         }
         // handle Jump
-        else if (_currentInput.jumpHeld && IsGrounded && _canJump)
+        else if (_currentInput.jumpHeld && IsGrounded && _canJump && !_launched)
         {
             _canJump = false;
             _rigidbody.linearVelocity += CurrentGravity * -1f * _jumpForce;
@@ -183,6 +191,10 @@ public class Movement : MonoBehaviour
             Debug.Log("Jumped " + VerticalVelocityDown);
         }
 
+        if (_launched)
+        {
+            return;
+        }
         SelectState();
         //Debug.Log("Current State: " + StateMachine.CurrentState);
         StateMachine.CurrentState?.StateFixedUpdate();
@@ -222,7 +234,13 @@ public class Movement : MonoBehaviour
 
     bool CanLaunchAtAttractor()
     {
-        return Physics.Raycast(CamTransform.position, CamTransform.forward, _launchMaxDistance, _launchZoneLayerMask);
+        RaycastHit hit;
+        if( Physics.Raycast(CamTransform.position, CamTransform.forward, out hit, _launchMaxDistance, _launchZoneLayerMask))
+        {
+            LaunchTargetAttractorPos = hit.point;
+            return true;
+        }
+        return false;
     }
 
     bool VerticalVelocityIsDown()
@@ -258,6 +276,18 @@ public class Movement : MonoBehaviour
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawLine(transform.position, transform.position + _currentGravity.normalized * (Player.PlayerCollider.height / 2f + _groundedRaycastExtraDistance));
+        }
+
+        if(CamTransform)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(CamTransform.position, CamTransform.position + CamTransform.forward * _launchMaxDistance);
+        }
+
+        if(LaunchTargetAttractorPos != Vector3.zero)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(LaunchTargetAttractorPos, Vector3.one * 0.1f);
         }
     }
 

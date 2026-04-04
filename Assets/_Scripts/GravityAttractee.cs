@@ -50,6 +50,7 @@ public class GravityAttractee : MonoBehaviour
                         //entered new attractors sphere
                         Debug.Log("Entered new attractors sphere");
                         PlayerController.Movement.SetCanLaunch(true);
+                        PlayerController.Movement.SetLaunched(false);
                     }
                     _currentAttractor = attraction.attractor;
                     _isAttracted = true;
