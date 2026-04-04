@@ -29,7 +29,12 @@ public class PlayerController : MonoBehaviour
         CameraLook = GetComponentInChildren<FPSCameraLook>();    
         Movement = GetComponentInChildren<Movement>();
         GravAttractee = GetComponent<GravityAttractee>();
-        if(!GravityHandler) GravityHandler = FindAnyObjectByType<GravityAttractionHandler>();
+        if (!GravityHandler)
+        {
+            Debug.LogWarning("Player: GravityHandler reference missing!");
+            GravityHandler = FindAnyObjectByType<GravityAttractionHandler>();
+        }
+        
     }
 
     private void Start()
@@ -47,7 +52,7 @@ public class PlayerController : MonoBehaviour
             input = new PlayerInput { };
         }
 
-        GravityHandler.UpdateHandler();
+        GravityHandler?.UpdateHandler();
         CameraLook.CameraLook(input.look);
         Movement.UpdateMovement(input);
     }

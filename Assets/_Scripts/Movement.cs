@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     private bool _canJump = true;
     [SerializeField] private float _jumpForce = 0.6f;
     public float JumpForce => _jumpForce;
+    public float AttractionZoneJumpForce;
 
     private bool _canLaunch = true;
     public bool CanLaunch => _canLaunch;
@@ -37,6 +38,7 @@ public class Movement : MonoBehaviour
     public float FallingMultiplier => _fallingMultiplier;
     [SerializeField] private float _gravityMultiplier = 1.5f;
     public float GravityMultiplier => _gravityMultiplier;
+    public float AttractionZoneGravityMultiplier;
     [SerializeField] private float _dynamicJumpReduction = 0.75f;
     public float DynamicJumpReduction => _dynamicJumpReduction;
     [SerializeField] private float _groundedRaycastExtraDistance = 0.1f;
@@ -111,6 +113,13 @@ public class Movement : MonoBehaviour
         CurrentGravityDebug = _currentGravity;
     }
 
+    public void SetToInAttractorZone()
+    {
+        IsInGravityAttractionZone = true;
+        _gravityMultiplier = AttractionZoneGravityMultiplier;
+        _jumpForce = AttractionZoneJumpForce;
+    }
+
     public void UpdateMovement(PlayerInput input)
     {
         _currentInput = input;
@@ -164,7 +173,7 @@ public class Movement : MonoBehaviour
         Debug.Log("OnGrounded");
         _canJump = true;
         _launched = false;
-        _camEffects.ShakeCamera(3, 0.15f);
+        _camEffects.ShakeCamera(0.5f, 0.15f);
         //_canLaunch
     }
 
@@ -177,7 +186,7 @@ public class Movement : MonoBehaviour
         CanLaunchDebug = CanLaunch;
         LaunchedDebug = Launched;
         //Debug.Log("Launch Target Visible: " + validLaunchTarget);
-        if(_currentInput.jumpHeld && IsGrounded && _canLaunch && validLaunchTarget)
+        if(_currentInput.jumpHeld && IsGrounded && _canLaunch && validLaunchTarget && IsInGravityAttractionZone)
         {
             _canLaunch = false;
             _rigidbody.linearVelocity = CamTransform.forward * _launchForce;
