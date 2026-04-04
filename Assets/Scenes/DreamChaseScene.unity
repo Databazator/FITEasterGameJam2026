@@ -1240,7 +1240,10 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 894c695d3fdc8a849b33ebcfc643e515, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4949657398800505333, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1847509353}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
 --- !u!1 &1416367344 stripped
@@ -1251,6 +1254,11 @@ GameObject:
 --- !u!1 &1416367345 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2497107749993420535, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
+  m_PrefabInstance: {fileID: 1416367343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1416367346 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4949657398800505333, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
   m_PrefabInstance: {fileID: 1416367343}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1575137987 stripped
@@ -1502,6 +1510,89 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1200909601}
   m_LocalEulerAnglesHint: {x: 0, y: -89.994, z: 0}
+--- !u!1 &1847509352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847509353}
+  - component: {fileID: 1847509355}
+  - component: {fileID: 1847509354}
+  m_Layer: 9
+  m_Name: DoorInteractable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1847509353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847509352}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3826, z: 0.9901}
+  m_LocalScale: {x: 0.16, y: 2.5712938, z: 2.1152601}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1416367346}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1847509354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847509352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307f95338796d02408eb5a3e1e2a1366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EventInteractable
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1932111626}
+        m_TargetAssemblyTypeName: StartGameFloorCollapseTrigger, Assembly-CSharp
+        m_MethodName: DissolveFloor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  InteractionCooldown: 0.5
+  OneTimeUse: 1
+--- !u!65 &1847509355
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847509352}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.1518035, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1896086756 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4426147881320005454, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
@@ -1561,7 +1652,7 @@ Transform:
   m_GameObject: {fileID: 1932111623}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.77503, y: 20.64, z: 2.78223}
+  m_LocalPosition: {x: -3.77503, y: 20.64, z: 12.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

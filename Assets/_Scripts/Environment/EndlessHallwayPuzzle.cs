@@ -12,7 +12,7 @@ public class EndlessHallwayPuzzle : MonoBehaviour
     public float PaintingRotationDuration;
 
     public GameObject SecretButton;
-    public Doorway SecretDoorway;
+    //public Doorway SecretDoorway;
 
     public int UnlockSecretAt;
 
@@ -32,8 +32,7 @@ public class EndlessHallwayPuzzle : MonoBehaviour
 
             if (_cycleCounter >= UnlockSecretAt)
             {
-                //SecretButton.SetActive(true);
-                SecretDoorway.OpenDoor(); // TODO, make da fukin button
+                SecretButton.SetActive(true);                
             }
         }
     }

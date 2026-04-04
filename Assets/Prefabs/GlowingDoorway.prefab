@@ -51,6 +51,7 @@ MonoBehaviour:
   Hinge: {fileID: 7813713524135132488}
   OpenedAngle: 110
   ClosedAngle: 0
+  OpenAtStart: 0
 --- !u!1 &2822583518766381244
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,8 +450,8 @@ Transform:
   m_GameObject: {fileID: 4822594191938391271}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3826, z: 0.97519994}
-  m_LocalScale: {x: 0.16, y: 2.5712938, z: 2.0854385}
+  m_LocalPosition: {x: 0, y: 1.3826, z: 0.9901}
+  m_LocalScale: {x: 0.16, y: 2.5712938, z: 2.1152601}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1005566914239960316}

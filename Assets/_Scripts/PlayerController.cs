@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public GravityAttractee GravAttractee;
     public GravityAttractionHandler GravityHandler;
     public CapsuleCollider PlayerCollider;    
+    public PlayerInteractor PlayerInteractor;
 
     private bool _hasControl;
     private bool _freezePlayer;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
         _inputProvider = GetComponent<InputProvider>();
         CameraLook = GetComponentInChildren<FPSCameraLook>();    
         Movement = GetComponentInChildren<Movement>();
+        PlayerInteractor = GetComponent<PlayerInteractor>();
         GravAttractee = GetComponent<GravityAttractee>();
         if (!GravityHandler)
         {
@@ -55,6 +57,7 @@ public class PlayerController : MonoBehaviour
         GravityHandler?.UpdateHandler();
         CameraLook.CameraLook(input.look);
         Movement.UpdateMovement(input);
+        PlayerInteractor.UpdateInteractor(input.primaryButtonPressed);
     }
     
     public void TeleportTo(Vector3 position)

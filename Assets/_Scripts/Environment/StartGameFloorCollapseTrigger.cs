@@ -39,7 +39,7 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
         DissolveFloor();
     }
 
-    void DissolveFloor()
+    public void DissolveFloor()
     {
         foreach (Material mat in DissolveMaterials)
         {

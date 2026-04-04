@@ -1,9 +1,9 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class CorridorOpenStartDoorTrigger : MonoBehaviour
+public class CorridorOpenLastDoorTrigger : MonoBehaviour
 {
-    public Doorway StartDoor;
+    public Doorway EndDoor;
     public GameObject DoorGlowGO;
     public float GlowFadeDuration;
     public float DoorOpenDuration = 2f;
@@ -18,15 +18,7 @@ public class CorridorOpenStartDoorTrigger : MonoBehaviour
     {
         Debug.Log($"collided with {other.gameObject}");
 
-        StartOpenDoor();
-
-    }
-
-    public void StartOpenDoor()
-    {
-        StartDoor.OpenDoor(DoorOpenDuration);
+        EndDoor.OpenDoor(DoorOpenDuration);
         GlowMaterial.DOColor(new Color(0f, 0f, 0f, 0f), GlowFadeDuration).SetEase(Ease.InQuad);
     }
 }
-
-
