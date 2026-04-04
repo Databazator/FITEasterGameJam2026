@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="FadeScreen" src="project://database/Assets/UI/FadeScreen.uxml?fileID=9197481963319205126&amp;guid=ab480964654c07e42b8873a10a38a505&amp;type=3#FadeScreen"/>
     <ui:Template name="TextScreen" src="project://database/Assets/UI/TextScreen.uxml?fileID=9197481963319205126&amp;guid=efa17c1db4d97974d909138cf7051a9e&amp;type=3#TextScreen"/>
-    <ui:Instance template="FadeScreen" name="FadeScreenRoot"/>
-    <ui:Instance template="TextScreen" name="TextScreenRoot"/>
+    <ui:Instance template="FadeScreen" name="FadeScreenRoot" style="position: absolute; width: 100%; height: 100%;"/>
+    <ui:Instance template="TextScreen" name="TextScreenRoot" style="position: absolute; width: 100%; height: 100%;"/>
 </ui:UXML>

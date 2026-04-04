@@ -36,11 +36,6 @@ public class PlayerController : MonoBehaviour
             Debug.LogWarning("Player: GravityHandler reference missing!");
             GravityHandler = FindAnyObjectByType<GravityAttractionHandler>();
         }
-        
-    }
-
-    private void Start()
-    {       
         _hasControl = true;
     }
 

@@ -18,7 +18,7 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
 
     public float DissolveDuration = 3f;
     public float FloorDisableColliderDuration = 2.3f;
-    public float DissolveDelay = 1f;
+    public float DissolveDelay = 0.5f;
     public float DisableRoomOffset = 1f;
     public float OpenDoorDelay = 3f;
     public float OpenDoorDuration = 2f;
