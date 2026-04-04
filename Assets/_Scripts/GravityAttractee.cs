@@ -1,11 +1,10 @@
-
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class GravityAttractee : MonoBehaviour
 {
+    public PlayerController PlayerController;
     public Vector3 CurrentGravity => _currentGravity;
 
     private Vector3 _currentGravity;
@@ -29,10 +28,11 @@ public class GravityAttractee : MonoBehaviour
     }
     internal void HandleAttractionForces()
     {
+        GravityAttractor lastAttractor = _currentAttractor;
+
         _isAttracted = false;
         _currentAttractor = null;
         _currentGravity = Vector3.zero;
-
         if (_currentAttractions.Count == 0)
         {            
             return;
@@ -44,7 +44,13 @@ public class GravityAttractee : MonoBehaviour
             if (attraction.attractor != _suppressedAttractor)
             {
                 if (attraction.attractor.AttractorRadius >= attraction.distance)
-                {
+                {   
+                    if(lastAttractor != attraction.attractor)
+                    {
+                        //entered new attractors sphere
+                        Debug.Log("Entered new attractors sphere");
+                        PlayerController.Movement.SetCanLaunch(true);
+                    }
                     _currentAttractor = attraction.attractor;
                     _isAttracted = true;
                     _currentGravity = attraction.gravForce;
@@ -52,9 +58,14 @@ public class GravityAttractee : MonoBehaviour
                     break;
                 }
             }
-        }
+        }        
 
         _currentAttractions.Clear();
+    }
+
+    private void Awake()
+    {
+        if(!PlayerController) PlayerController = GetComponent<PlayerController>();
     }
 
 

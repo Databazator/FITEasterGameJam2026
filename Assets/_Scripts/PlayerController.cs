@@ -1,17 +1,20 @@
 using System;
 using UnityEngine;
+using UnityEngine.Windows;
 // Simple modular player controller
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class PlayerController : MonoBehaviour
 {
-    CharacterController _charController;
-    public CharacterController CharController => _charController;
+    Rigidbody _rigidbody;
+    public Rigidbody Rigidbody => _rigidbody;
     InputProvider _inputProvider;
     public FPSCameraLook CameraLook;
     public Movement Movement;
     public GravityAttractee GravAttractee;
     public GravityAttractionHandler GravityHandler;
+    public CapsuleCollider PlayerCollider;    
 
     private bool _hasControl;
     private bool _freezePlayer;
@@ -21,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        _charController = GetComponent<CharacterController>();
+        _rigidbody = GetComponent<Rigidbody>();
         _inputProvider = GetComponent<InputProvider>();
         CameraLook = GetComponentInChildren<FPSCameraLook>();    
         Movement = GetComponentInChildren<Movement>();
@@ -48,11 +51,12 @@ public class PlayerController : MonoBehaviour
         CameraLook.CameraLook(input.look);
         Movement.UpdateMovement(input);
     }
+    
     public void TeleportTo(Vector3 position)
     {
-        _charController.enabled = false;
+        //_rigidbody.enabled = false;
         this.transform.position = position;
-        _charController.enabled = true;
+        //_rigidbody.enabled = true;
     }
 
     public void SetRotation(Vector3 eulerAngles)

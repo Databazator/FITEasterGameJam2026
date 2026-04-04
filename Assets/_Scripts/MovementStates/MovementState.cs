@@ -4,7 +4,7 @@ public class MovementState : MonoBehaviour
 {
     protected PlayerController _playerController;
     protected Movement _movement;
-    protected CharacterController _controller;
+    protected Rigidbody _rigidbody;
     public bool IsComplete { get; protected set; }
 
     protected float _enterTime;
@@ -21,7 +21,7 @@ public class MovementState : MonoBehaviour
     public virtual void Setup(PlayerController playerController) {
         _playerController = playerController;
         _movement = _playerController.Movement;
-        _controller = playerController.CharController;
+        _rigidbody = playerController.Rigidbody;
     }
 
     public virtual void Initialise()

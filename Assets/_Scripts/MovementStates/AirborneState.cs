@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class AirborneState : MovementState
 {
-    private Vector3 _verticalVelocity;
+    private Vector3 _initialVerticalVelocity;
     private Vector3 _horizontalVelocity;
 
     public override void Enter()
     {
-        _verticalVelocity = Vector3.zero + _movement.JumpVelocity;
+        _initialVerticalVelocity = _movement.JumpVelocity;
         _movement.SetJumpVelocity(Vector3.zero);
 
-        _horizontalVelocity = _movement.HorizontalVelocity;
+        //_horizontalVelocity = _movement.HorizontalVelocity;
     }
 
     public override void Exit()
@@ -18,35 +18,54 @@ public class AirborneState : MovementState
         
     }
 
-    public override void StateUpdate()
+    public override void StateFixedUpdate()
     {
-        //--------------------------------------------------------------------------------------------
-        // Air control horizontal movement
-        Vector3 movementVector = new Vector3(_movement.MoveInput.x, 0f, _movement.MoveInput.y);
+        if(_movement.Launched && _movement.Player.GravAttractee.CurrentAttractor == _movement.Player.GravAttractee.SuppressedAttactor)
+        {
+            return;
+        }
 
-        Vector3 movement = transform.TransformDirection(movementVector);
+        // ---------------------------------------
+        // Input movement (local ? world)
+        Vector3 movementVector = new Vector3(_movement.MoveInput.x, 0f, _movement.MoveInput.y);
+        Vector3 movement = _movement.CamTransform.TransformDirection(movementVector);
 
         float speed = _movement.CurrentInput.sprint ? _movement.SprintSpeed : _movement.Speed;
-        _horizontalVelocity = movement * speed * _movement.AirControlMultiplier;
-        _movement.HorizontalVelocity = _horizontalVelocity;           
+        Vector3 targetHorizontalVelocity = movement * speed * _movement.AirControlMultiplier;
 
-        // ---------------------------------------------------------------
-        // dyn jump reduction
-        if (_movement.CurrentInput.jumpReleased &&_movement.VerticalVelocityUp)
+        // ---------------------------------------
+        // Get current velocity
+        Vector3 velocity = _rigidbody.linearVelocity;
+
+        // ---------------------------------------
+        // Separate vertical component
+        Vector3 gravityDir = _movement.CurrentGravity.normalized;
+
+        Vector3 verticalVel = Vector3.Project(velocity, gravityDir) + _initialVerticalVelocity;
+        Vector3 horizontalVel = velocity - verticalVel;
+
+        // ---------------------------------------
+        // Apply air control (horizontal)
+        horizontalVel = Vector3.ProjectOnPlane(targetHorizontalVelocity, gravityDir);
+
+        // ---------------------------------------
+        // Dynamic jump reduction
+        if (_movement.CurrentInput.jumpReleased && _movement.VerticalVelocityUp)
         {
-            _verticalVelocity *= _movement.DynamicJumpReduction;
+            verticalVel *= _movement.DynamicJumpReduction;
         }
-        // -------------------------------------------------------------------
-        // calc falling gravity
+
+        // ---------------------------------------
+        // Gravity
         float fallMultiplier = _movement.VerticalVelocityDown ? _movement.FallingMultiplier : 1f;
-        _verticalVelocity += _movement.CurrentGravity * fallMultiplier * _movement.GravityMultiplier * Time.deltaTime;
 
-        //  -------------------------------------------------------------------
-        // apply move vectors
-        _movement.VerticalVelocity = _verticalVelocity;
+        verticalVel += _movement.CurrentGravity * fallMultiplier * _movement.GravityMultiplier * Time.fixedDeltaTime;
 
-        _movement.Velocity = _horizontalVelocity + _verticalVelocity;
+        _movement.VerticalVelocity = verticalVel;
+        _movement.HorizontalVelocity = horizontalVel;
 
-        _controller.Move((_horizontalVelocity + _verticalVelocity) * Time.deltaTime);
+        // ---------------------------------------
+        // Final velocity
+        _rigidbody.linearVelocity = horizontalVel + verticalVel;
     }
 }

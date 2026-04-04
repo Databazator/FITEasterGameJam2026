@@ -1,22 +1,35 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Movement : MonoBehaviour
 {
-    CharacterController _controller;
+    Rigidbody _rigidbody;
     public PlayerController Player;
+    public Transform CamTransform;
 
     [SerializeField] private float _speed = 8f;
     public float Speed => _speed;
     [SerializeField] private float _sprintSpeed = 12f;
     public float SprintSpeed => _sprintSpeed;
 
-    [SerializeField] private float _jumpForce = 2f;
+    private bool _canJump = true;
+    [SerializeField] private float _jumpForce = 0.6f;
     public float JumpForce => _jumpForce;
+
+    private bool _canLaunch = true;
+    public bool CanLaunch => _canLaunch;
+
+    private bool _launched = false;
+    public bool Launched => _launched;
+    public void SetLaunched(bool val) => _launched = val;
+    public void SetCanLaunch(bool val) => _canLaunch = val;
 
     [SerializeField] private float _launchForce = 15f;
     public float LaunchForce => _launchForce;
+
+    [SerializeField] private float _launchMaxDistance = 50f;
+    [SerializeField] private LayerMask _launchZoneLayerMask;
 
     [SerializeField] private float _fallingMultiplier = 1.5f;
     public float FallingMultiplier => _fallingMultiplier;
@@ -66,13 +79,14 @@ public class Movement : MonoBehaviour
     public MovementState CurrentState;
     public bool IsAttracted;
     public GravityAttractor CurrentAttractor;
+    public GravityAttractor CurrentlySuppressed;
 
     void Awake()
     {
         if (Player == null)
             Player = GetComponent<PlayerController>();
 
-        _controller = GetComponent<CharacterController>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     void Start()
@@ -95,24 +109,26 @@ public class Movement : MonoBehaviour
         _currentInput = input;
         MoveInput = input.move.normalized;
 
-        IsGrounded = CharacterIsGrounded() && JumpVelocity == Vector3.zero;
+        bool wasGroundedLastFrame = IsGrounded;
+
+        IsGrounded = CharacterIsGrounded() && VerticalVelocityDown;
+
+        if(!wasGroundedLastFrame && IsGrounded)
+        {
+            OnGrounded();
+        }
 
         VerticalVelocityUp = VerticalVelocityIsUp();
         VerticalVelocityDown = VerticalVelocityIsDown();
-
-
-        // handle Jump
-        if (_currentInput.jumpHeld && IsGrounded)
-            _jumpVelocity = transform.up * _jumpForce;
-
-        SelectState();
+        
         StateMachine.CurrentState?.StateUpdate();
 
         IsAttracted = Player.GravAttractee.IsAttracted;
         CurrentAttractor = Player.GravAttractee.CurrentAttractor;
+        CurrentlySuppressed = Player.GravAttractee.SuppressedAttactor;
 
         //update target up based on attractor
-        if(IsInGravityAttractionZone && Player.GravAttractee.IsAttracted)
+        if (IsInGravityAttractionZone && Player.GravAttractee.IsAttracted)
         { 
             if(!IsGrounded)
             {
@@ -125,21 +141,62 @@ public class Movement : MonoBehaviour
                 _targetUp = _currentGravity * -1f;
             }
         }
+        else if(IsInGravityAttractionZone && !Player.GravAttractee.IsAttracted)
+        {
+            SetGravity(Vector3.zero);
+            //_targetUp = transform.up;
+        }
 
         // update body rotation
-        Quaternion targetRotation = Quaternion.FromToRotation(transform.up, _targetUp) * transform.rotation;
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _bodyRotationSpeed);
+        Quaternion targetRotation = Quaternion.FromToRotation(transform.up, _targetUp) * _rigidbody.rotation;
+        _rigidbody.rotation = Quaternion.Slerp(_rigidbody.rotation, targetRotation, Time.deltaTime * _bodyRotationSpeed);
+    }
+
+    void OnGrounded()
+    {
+        Debug.Log("OnGrounded");
+        _canJump = true;
+        _launched = false;
+        //_canLaunch
+    }
+
+    private void FixedUpdate()
+    {
+        // first check for launch
+        bool validLaunchTarget = CanLaunchAtAttractor();
+        //Debug.Log("Launch Target Visible: " + validLaunchTarget);
+        if(_currentInput.jumpHeld && IsGrounded && _canLaunch && validLaunchTarget)
+        {
+            _canLaunch = false;
+            _rigidbody.linearVelocity = CamTransform.forward * _launchForce;
+            Player.GravAttractee.SetSuppressedAttractor(Player.GravAttractee.CurrentAttractor);
+            _launched = true;
+            Debug.Log("Launched");
+        }
+        // handle Jump
+        else if (_currentInput.jumpHeld && IsGrounded && _canJump)
+        {
+            _canJump = false;
+            _rigidbody.linearVelocity += CurrentGravity * -1f * _jumpForce;
+            VerticalVelocity = CurrentGravity * -1f * _jumpForce;
+            VerticalVelocityDown = VerticalVelocityIsDown();
+            Debug.Log("Jumped " + VerticalVelocityDown);
+        }
+
+        SelectState();
+        //Debug.Log("Current State: " + StateMachine.CurrentState);
+        StateMachine.CurrentState?.StateFixedUpdate();
     }
 
     void SelectState()
     {
-        if (IsGrounded && MoveInput == Vector2.zero && VerticalVelocityDown)
+        if (IsGrounded && MoveInput == Vector2.zero && VerticalVelocityDown && !Launched)
         {
             CurrentState = Idle;
             StateMachine.SetState(Idle);
             return;
         }
-        if (IsGrounded && VerticalVelocityDown)
+        if (IsGrounded && VerticalVelocityDown && !Launched)
         {
             CurrentState = Ground;
             StateMachine.SetState(Ground);
@@ -156,11 +213,16 @@ public class Movement : MonoBehaviour
     bool CharacterIsGrounded()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, _currentGravity, out hit, _controller.height / 2f + _groundedRaycastExtraDistance, _groundLayerMask))
+        if (Physics.Raycast(transform.position, _currentGravity, out hit, Player.PlayerCollider.height / 2f + _groundedRaycastExtraDistance, _groundLayerMask))
         {
             return true;
         }
         return false;
+    }
+
+    bool CanLaunchAtAttractor()
+    {
+        return Physics.Raycast(CamTransform.position, CamTransform.forward, _launchMaxDistance, _launchZoneLayerMask);
     }
 
     bool VerticalVelocityIsDown()
@@ -192,10 +254,10 @@ public class Movement : MonoBehaviour
         //Gizmos.color = Color.red;
         //Gizmos.DrawLine(transform.position, transform.position + _currentGravity);
 
-        if (_controller)
+        if (_rigidbody)
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(transform.position, transform.position + _currentGravity.normalized * (_controller.height / 2f + _groundedRaycastExtraDistance));
+            Gizmos.DrawLine(transform.position, transform.position + _currentGravity.normalized * (Player.PlayerCollider.height / 2f + _groundedRaycastExtraDistance));
         }
     }
 

@@ -7,8 +7,9 @@ public class IdleState : MovementState
         base.Enter();
     }
 
-    public override void StateUpdate()
+    public override void StateFixedUpdate()
     {
-        
+        _rigidbody.linearVelocity = _movement.CurrentGravity.normalized;
+        _movement.VerticalVelocity = _movement.CurrentGravity.normalized;
     }
 }
