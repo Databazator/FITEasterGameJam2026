@@ -7,6 +7,8 @@ public class Movement : MonoBehaviour
     Rigidbody _rigidbody;
     public PlayerController Player;
     public Transform CamTransform;
+    private CameraEffects _camEffects;
+    public CameraEffects CamEffects => _camEffects;
 
     [SerializeField] private float _speed = 8f;
     public float Speed => _speed;
@@ -91,6 +93,7 @@ public class Movement : MonoBehaviour
             Player = GetComponent<PlayerController>();
 
         _rigidbody = GetComponent<Rigidbody>();
+        _camEffects = GetComponentInChildren<CameraEffects>();
     }
 
     void Start()
@@ -161,6 +164,7 @@ public class Movement : MonoBehaviour
         Debug.Log("OnGrounded");
         _canJump = true;
         _launched = false;
+        _camEffects.ShakeCamera(3, 0.15f);
         //_canLaunch
     }
 
@@ -180,6 +184,8 @@ public class Movement : MonoBehaviour
             Player.GravAttractee.SetSuppressedAttractor(Player.GravAttractee.CurrentAttractor);
             _launched = true;
             Debug.Log("Launched");
+            CamEffects.ShowSpeedlines(0.5f);
+            CamEffects.SetFOV(70f, 0.25f);
         }
         // handle Jump
         else if (_currentInput.jumpHeld && IsGrounded && _canJump && !_launched)
