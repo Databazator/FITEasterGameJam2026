@@ -5,6 +5,8 @@ public class GravityAttractor : MonoBehaviour
 {
     public float AttractorRadius;
     public float GravityStrength;
+    public bool OverrideUpVector = false;
+    public Vector3 CustomUpVector;
 
     private GravityAttractee _player;
 

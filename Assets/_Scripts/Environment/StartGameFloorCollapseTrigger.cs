@@ -1,17 +1,18 @@
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 
 public class StartGameFloorCollapseTrigger : MonoBehaviour
 {
     public PlayerController Player;
     public GameObject FloorGO;
+    public List<GameObject> DissolveGOs;
     public GameObject Bedroom;
     public Doorway ExitDoor;
     public Light MainLight;
     //public GameObject MainLightGO;
-
-    private Material FloorMaterial;
+    
+    private List<Material> DissolveMaterials = new List<Material>();
     private Collider FloorCollider;
 
     public float DissolveDuration = 3f;
@@ -24,7 +25,10 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
     private void Awake()
     {
         FloorCollider = FloorGO.GetComponent<Collider>();
-        FloorMaterial = FloorGO.GetComponent<Renderer>().material;
+        foreach (GameObject go in DissolveGOs)
+        {
+            DissolveMaterials.Add(go.GetComponent<Renderer>().material);
+        }       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,15 +39,19 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
 
     void DissolveFloor()
     {
-        if(FloorMaterial.HasFloat("_Dissolve"))
+        foreach (Material mat in DissolveMaterials)
         {
-            //dissolve
-            DOTween.To(() => FloorMaterial.GetFloat("_Dissolve"), (float val) => FloorMaterial.SetFloat("_Dissolve", val), 0.85f, DissolveDelay + DissolveDuration).SetEase(Ease.InQuad);
+
+            if (mat.HasFloat("_Dissolve"))
+            {
+                //dissolve
+                DOTween.To(() => mat.GetFloat("_Dissolve"), (float val) => mat.SetFloat("_Dissolve", val), 0.85f, DissolveDelay + DissolveDuration).SetEase(Ease.InQuad);
+            }
         }
         DOVirtual.DelayedCall(DissolveDelay + FloorDisableColliderDuration, () =>
         {
             FloorCollider.enabled = false;
-            Player.Movement.IsInGravityAttractionZone = true;
+            Player.Movement.SetToInAttractorZone();
             DOVirtual.DelayedCall(DisableRoomOffset, () => Bedroom.SetActive(false));
         });
 

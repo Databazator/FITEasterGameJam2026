@@ -49,10 +49,8 @@ public class GravityAttractee : MonoBehaviour
                     {
                         //entered new attractors sphere
                         Debug.Log("Entered new attractors sphere");
-                        PlayerController.Movement.SetCanLaunch(true);
-                        PlayerController.Movement.SetLaunched(false);
-                        PlayerController.Movement.CamEffects.FadeSpeedlines(1.5f);
-                        PlayerController.Movement.CamEffects.UnsetFOV(1f);
+
+                        PlayerController.Movement.OnLaunchEnd();                       
                     }
                     _currentAttractor = attraction.attractor;
                     _isAttracted = true;

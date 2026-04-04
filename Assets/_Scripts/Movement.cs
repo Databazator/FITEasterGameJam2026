@@ -49,6 +49,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private LayerMask _groundLayerMask;
     public LayerMask GroundLayerMask => _groundLayerMask;
 
+    public LayerMask LauchIgnoreLayerMask;
 
     public bool IsInGravityAttractionZone = false;
 
@@ -87,7 +88,9 @@ public class Movement : MonoBehaviour
     public bool ValidLaunchTarget;
     public bool CanLaunchDebug;
     public bool LaunchedDebug;
-    public Vector3 LaunchTargetAttractorPos;
+    //public Vector3 LaunchTargetAttractorPos;
+    public Vector3 CurrentUpTarget;
+    
 
     void Awake()
     {
@@ -102,6 +105,7 @@ public class Movement : MonoBehaviour
     {
         SetGravity(Physics.gravity);
         _targetUp = _currentGravity * -1f;
+        CurrentUpTarget = _targetUp;
 
         _stateMachine.SetupStates(Player);
         _stateMachine.SetState(Idle);
@@ -111,6 +115,11 @@ public class Movement : MonoBehaviour
     {
         _currentGravity = currentGravity;
         CurrentGravityDebug = _currentGravity;
+        if(currentGravity != Vector3.zero)
+        {
+            _targetUp = _currentGravity * -1f;
+            CurrentUpTarget = _targetUp;
+        }
     }
 
     public void SetToInAttractorZone()
@@ -149,12 +158,30 @@ public class Movement : MonoBehaviour
             if(!IsGrounded)
             {
                 SetGravity(Player.GravAttractee.CurrentGravity);
-                _targetUp = _currentGravity * -1f;
+
+                if (Player.GravAttractee.CurrentAttractor.OverrideUpVector)
+                {
+                    _targetUp = transform.up; //Player.GravAttractee.CurrentAttractor.CustomUpVector;
+
+                }
+                else
+                {
+                    _targetUp = _currentGravity * -1f;
+                }
+                CurrentUpTarget = _targetUp;
             }
             else
             {
                 SetGravity(Player.GravAttractee.CurrentGravity);
-                _targetUp = _currentGravity * -1f;
+                if (Player.GravAttractee.CurrentAttractor.OverrideUpVector)
+                {
+                    _targetUp = transform.up;//Player.GravAttractee.CurrentAttractor.CustomUpVector;
+                }
+                else
+                {
+                    _targetUp = _currentGravity * -1f;
+                }
+                CurrentUpTarget = _targetUp;
             }
         }
         else if(IsInGravityAttractionZone && !Player.GravAttractee.IsAttracted)
@@ -168,12 +195,30 @@ public class Movement : MonoBehaviour
         _rigidbody.rotation = Quaternion.Slerp(_rigidbody.rotation, targetRotation, Time.deltaTime * _bodyRotationSpeed);
     }
 
+    public void OnLaunchStart()
+    {
+        _rigidbody.excludeLayers = LauchIgnoreLayerMask;
+
+        CamEffects.ShowSpeedlines(0.5f);
+        CamEffects.SetFOV(70f, 0.25f);
+    }
+
+    public void OnLaunchEnd()
+    {
+        _rigidbody.excludeLayers = 0;
+
+        SetCanLaunch(true);
+        SetLaunched(false);
+        CamEffects.FadeSpeedlines(1.5f);
+        CamEffects.UnsetFOV(1f);
+    }
+
     void OnGrounded()
     {
         Debug.Log("OnGrounded");
         _canJump = true;
         _launched = false;
-        _camEffects.ShakeCamera(0.5f, 0.15f);
+        _camEffects.ShakeCamera(0.75f, 0.15f);
         //_canLaunch
     }
 
@@ -193,8 +238,8 @@ public class Movement : MonoBehaviour
             Player.GravAttractee.SetSuppressedAttractor(Player.GravAttractee.CurrentAttractor);
             _launched = true;
             Debug.Log("Launched");
-            CamEffects.ShowSpeedlines(0.5f);
-            CamEffects.SetFOV(70f, 0.25f);
+            
+            OnLaunchStart();
         }
         // handle Jump
         else if (_currentInput.jumpHeld && IsGrounded && _canJump && !_launched)
@@ -252,7 +297,7 @@ public class Movement : MonoBehaviour
         RaycastHit hit;
         if( Physics.Raycast(CamTransform.position, CamTransform.forward, out hit, _launchMaxDistance, _launchZoneLayerMask))
         {
-            LaunchTargetAttractorPos = hit.point;
+            //LaunchTargetAttractorPos = hit.point;
             return true;
         }
         return false;
@@ -299,11 +344,11 @@ public class Movement : MonoBehaviour
             Gizmos.DrawLine(CamTransform.position, CamTransform.position + CamTransform.forward * _launchMaxDistance);
         }
 
-        if(LaunchTargetAttractorPos != Vector3.zero)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(LaunchTargetAttractorPos, Vector3.one * 0.1f);
-        }
+        //if(LaunchTargetAttractorPos != Vector3.zero)
+        //{
+        //    Gizmos.color = Color.yellow;
+        //    Gizmos.DrawWireCube(LaunchTargetAttractorPos, Vector3.one * 0.1f);
+        //}
     }
 
 
