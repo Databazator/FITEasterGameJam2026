@@ -641,7 +641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15c33ea159be4b40b1f7826bed8250f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  Hinge: {fileID: 0}
+  Hinge: {fileID: 3117645638220332159}
   OpenedAngle: 110
   ClosedAngle: 0
 --- !u!1 &6228750163921471683

@@ -7,10 +7,13 @@ public class Doorway : MonoBehaviour
     public Transform Hinge;
     public float OpenedAngle = 110f;
     public float ClosedAngle = 0f;
+    public bool OpenAtStart = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (!Hinge) Debug.LogWarning("Hidge not assigned");
+        if (OpenAtStart)
+            OpenDoor();
     }
     
     public void OpenDoor(float duration = 2f)

@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
     public void TeleportTo(Vector3 position)
     {
         //_rigidbody.enabled = false;
-        this.transform.position = position;
+        this.Rigidbody.position = position;
         //_rigidbody.enabled = true;
     }
 
