@@ -903,7 +903,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 21.2
+      value: 20.9
       mode: 0
       spread: 0
       speed:
@@ -5224,6 +5224,9 @@ MonoBehaviour:
   _groundLayerMask:
     serializedVersion: 2
     m_Bits: 65
+  LauchIgnoreLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   IsInGravityAttractionZone: 0
   _bodyRotationSpeed: 7
   Ground: {fileID: 358610557584483687}
@@ -5244,7 +5247,7 @@ MonoBehaviour:
   ValidLaunchTarget: 0
   CanLaunchDebug: 0
   LaunchedDebug: 0
-  LaunchTargetAttractorPos: {x: 0, y: 0, z: 0}
+  CurrentUpTarget: {x: 0, y: 0, z: 0}
 --- !u!114 &1398736319214887201
 MonoBehaviour:
   m_ObjectHideFlags: 0

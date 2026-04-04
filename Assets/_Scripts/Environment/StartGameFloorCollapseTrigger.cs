@@ -10,6 +10,7 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
     public GameObject Bedroom;
     public Doorway ExitDoor;
     public Light MainLight;
+    public NightmareController NightmareController;
     //public GameObject MainLightGO;
     
     private List<Material> DissolveMaterials = new List<Material>();
@@ -21,6 +22,7 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
     public float DisableRoomOffset = 1f;
     public float OpenDoorDelay = 3f;
     public float OpenDoorDuration = 2f;
+    public float NightmareAppearDelay = 1.5f;
 
     private void Awake()
     {
@@ -63,6 +65,8 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
             MainLight.gameObject.SetActive(true);
             MainLight.intensity = 0f;
             MainLight.DOIntensity(2f, OpenDoorDuration).SetEase(Ease.InOutQuad);
+
+            DOVirtual.DelayedCall(NightmareAppearDelay, () => NightmareController.StartNightmare());
         });
 
     }

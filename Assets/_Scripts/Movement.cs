@@ -99,6 +99,9 @@ public class Movement : MonoBehaviour
 
         _rigidbody = GetComponent<Rigidbody>();
         _camEffects = GetComponentInChildren<CameraEffects>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Start()
