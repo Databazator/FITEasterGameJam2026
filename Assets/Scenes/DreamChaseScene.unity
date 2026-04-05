@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 860a66ca4259b384f9ec01b687f71c3c, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -152,12 +152,12 @@ MonoBehaviour:
   Player: {fileID: 7204885864304672164}
   NightmareMesh: {fileID: 1995601169}
   NightmareLight: {fileID: 1712484578}
-  NightmareMeshSize: 6
-  NightmareLateralSpeed: 2.5
+  NightmareMeshSize: 7
+  NightmareLateralSpeed: 3
   NightmareAppearDuration: 3
-  NoisePlayerDistances: {x: 0, y: 50}
-  DistanceNoiseVolumeRanges: {x: 0.15, y: 0}
-  NightmareSpeed: {x: -4, y: 0, z: 0}
+  NoisePlayerDistances: {x: 0, y: 80}
+  DistanceNoiseVolumeRanges: {x: 0.2, y: 0}
+  NightmareSpeed: {x: -4.5, y: 0, z: 0}
   NoiseSource: {fileID: 97401284}
   globalVolume: {fileID: 832575518}
   playerCamera: {fileID: 1693142810}
@@ -1479,7 +1479,7 @@ PrefabInstance:
     - target: {fileID: 7213928615015943315, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 894c695d3fdc8a849b33ebcfc643e515, type: 2}
+      objectReference: {fileID: 2100000, guid: 4fe9a2912a4dc6b4bbd2f9d60cd93c30, type: 2}
     - target: {fileID: 7714813082775519958, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -2518,8 +2518,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2149816003886115580, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149816003886115580, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
       propertyPath: far clip plane
-      value: 200
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
       propertyPath: _bodyRotationSpeed
