@@ -345,6 +345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3585316192987281994}
+  - component: {fileID: 2656994206025922714}
   m_Layer: 0
   m_Name: Switch
   m_TagString: Untagged
@@ -369,6 +370,23 @@ Transform:
   - {fileID: 8176453249930353861}
   m_Father: {fileID: 6455735974966745486}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2656994206025922714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836970510701828541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307f95338796d02408eb5a3e1e2a1366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EventInteractable
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  InteractionCooldown: 0.5
+  OneTimeUse: 0
 --- !u!1 &2020541626354973035
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,15 +11,17 @@ public class GUIManager : MonoBehaviour
 
     Label _textLabel;
     VisualElement _fadeScreen;
+    VisualElement _interactionIndicator;
 
     private Tweener _fadeTweener;
     private Tweener _typingTweener;
+    private Tweener _indicTweener;
 
     private static GUIManager _instance;
     public static GUIManager Instance => _instance;
     private void Awake()
     {
-        if(_instance != null && _instance != this)
+        if (_instance != null && _instance != this)
         {
             Destroy(this);
         }
@@ -31,14 +33,19 @@ public class GUIManager : MonoBehaviour
         _rootElement = _document.rootVisualElement;
         _textLabel = _rootElement.Q("TextLabel") as Label;
         _textLabel.text = "";
-        
+
         _fadeScreen = _rootElement.Q("FadeScreen") as VisualElement;
         _fadeScreen.style.backgroundColor = Color.black;
+
+        _interactionIndicator = _rootElement.Q("InteractionIndicator") as VisualElement;
+        ShowIndicator(false, 0f);
+        //_interactionIndicator.style.width;
     }
 
     public Tweener Fade(float targetAlpha, float duration, Ease easeType)
     {
-        if(_fadeTweener != null && _fadeTweener.IsActive()) {
+        if (_fadeTweener != null && _fadeTweener.IsActive())
+        {
             _fadeTweener.Kill();
         }
         Color targetColor = Color.black;
@@ -61,6 +68,17 @@ public class GUIManager : MonoBehaviour
         DOVirtual.DelayedCall(timeToType + fadeInDuration, () => _textLabel.text = "");
     }
 
+    public void ShowIndicator(bool show, float duration = 0.25f)
+    {
 
-    
+        if (_indicTweener != null && _indicTweener.IsActive())
+        {
+            _indicTweener.Kill();
+        }
+
+        Color target = show ? Color.white : Color.clear;
+
+        _indicTweener = DOTween.To(() => _interactionIndicator.style.unityBackgroundImageTintColor.value,
+            (Color clr) => _interactionIndicator.style.unityBackgroundImageTintColor = clr, target, duration).SetEase(Ease.InOutQuad);
+    }
 }

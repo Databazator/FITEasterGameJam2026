@@ -6,19 +6,33 @@ public class PlayerInteractor : MonoBehaviour
     public LayerMask InteractionsLayerMask;
     public Transform RaycastOrigin;
 
+    public EventInteractable LastHit;
+
     public void UpdateInteractor(bool interact)
     {
         //Debug.Log($"Update Interactor called! {interact}");
-        if (!interact) return;
+        
         RaycastHit hit;
         if(Physics.Raycast(RaycastOrigin.position, RaycastOrigin.forward, out hit, InteractionDistance, InteractionsLayerMask))
         {
+            
             //Debug.Log($"Interactor raycast hit! {hit.collider.gameObject}");
             EventInteractable ei = hit.collider.GetComponentInParent<EventInteractable>();
-            if(ei && ei.CanInteract())
+            if(LastHit == null)
+            {
+                GUIManager.Instance.ShowIndicator(true);
+                LastHit = ei;
+            }
+
+            if(ei && interact && ei.CanInteract())
             {
                 ei.Interact();
             }
+        }
+        else
+        {
+            GUIManager.Instance.ShowIndicator(false);
+            LastHit = null;
         }
     }
 }

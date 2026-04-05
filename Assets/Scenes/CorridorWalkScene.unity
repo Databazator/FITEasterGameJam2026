@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 7647749}
   - component: {fileID: 7647748}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: EndGameTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
