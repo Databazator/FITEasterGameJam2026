@@ -213,6 +213,8 @@ public class Movement : MonoBehaviour
 
         CamEffects.ShowSpeedlines(0.5f);
         CamEffects.SetFOV(70f, 0.25f);
+
+        _sfxPlayer?.PlayGravityChange();
     }
 
     public void OnLaunchEnd()
@@ -239,6 +241,18 @@ public class Movement : MonoBehaviour
         // first check for launch
         bool validLaunchTarget = CanLaunchAtAttractor();
         // dbug
+        if (IsInGravityAttractionZone)
+        {
+            if (validLaunchTarget)
+            {
+                GUIManager.Instance.ShowIndicator(true, 0f);
+            }
+            else
+            {
+                GUIManager.Instance.ShowIndicator(false, 0f);
+            }
+        }
+    
         ValidLaunchTarget = validLaunchTarget;
         CanLaunchDebug = CanLaunch;
         LaunchedDebug = Launched;

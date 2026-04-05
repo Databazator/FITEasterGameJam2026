@@ -28,7 +28,7 @@ public class DreamStartSequence : MonoBehaviour
             DOVirtual.DelayedCall(0.5f, () =>
             {
                 gui.Fade(1f, 0.5f, Ease.InOutQuad);
-                DOVirtual.DelayedCall(0.4f, () =>
+                DOVirtual.DelayedCall(0.7f, () =>
                 {
                     gui.Fade(0f, 0.75f, Ease.InCubic);
                 });
