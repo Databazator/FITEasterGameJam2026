@@ -301,7 +301,9 @@ public class Movement : MonoBehaviour
         if( Physics.Raycast(CamTransform.position, CamTransform.forward, out hit, _launchMaxDistance, _launchZoneLayerMask))
         {
             //LaunchTargetAttractorPos = hit.point;
-            return true;
+            if(hit.collider.gameObject.layer == LayerMask.NameToLayer("AttractorRadius"))
+                return true;
+            return false;
         }
         return false;
     }

@@ -28,11 +28,11 @@ public class DreamStartSequence : MonoBehaviour
             });
         });
 
-        DOVirtual.DelayedCall(BlinkOpenDuration, () => gui.WriteText("Uhh...is it the middle of the night?", 2f));
+        DOVirtual.DelayedCall(BlinkOpenDuration, () => gui.WriteText("uhh...is it the middle of the night?", 2f));
         
         DOVirtual.DelayedCall(BlinkOpenDuration + 5f, () =>
         {
-            gui.WriteText("Did I leave a light on?", 2f);
+            gui.WriteText("did I leave a light on?", 2f);
             player.SetHasControl(true);
         });
 
@@ -44,7 +44,7 @@ public class DreamStartSequence : MonoBehaviour
 
     public void TextVocalizeDissolve()
     {
-        DOVirtual.DelayedCall(1f, () => gui.WriteText("What the ...", 2f));
+        DOVirtual.DelayedCall(1.5f, () => gui.WriteText("What the ...", 2f));
     }
   
 }

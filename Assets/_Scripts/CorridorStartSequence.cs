@@ -19,13 +19,13 @@ public class CorridorStartSequence : MonoBehaviour
         DOVirtual.DelayedCall(0.5f, () =>
         {
             player.Movement.CamEffects.ShakeCamera(5, 0.35f);
-            gui.WriteText("oh... just a nightmare...", 2f);
+            gui.WriteText("oh... just a dream...", 2f);
             player.SetHasControl(true);
         });
 
         DOVirtual.DelayedCall(6f, () =>
         {
-            gui.WriteText("I should still turn the light off", 2f);
+            gui.WriteText("I should still turn that light off", 2f);
         });
     }
 }
