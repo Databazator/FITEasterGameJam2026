@@ -3,13 +3,16 @@ using UnityEngine;
 
 public class CorridorStartSequence : MonoBehaviour
 {
-    PlayerController player;
+    public AudioClip Ambience;
+    public PlayerController player;
     GUIManager gui;
     void Start()
     {
         gui = GUIManager.Instance;
-        player = FindAnyObjectByType<PlayerController>();
+        if(!player) player = FindAnyObjectByType<PlayerController>();
         player.SetHasControl(false);
+
+        AudioManager.Instance?.PlayAmbient(Ambience, 0.2f);
 
         DOVirtual.DelayedCall(0.25f, () =>
         {
@@ -19,7 +22,7 @@ public class CorridorStartSequence : MonoBehaviour
         DOVirtual.DelayedCall(0.5f, () =>
         {
             player.Movement.CamEffects.ShakeCamera(5, 0.35f);
-            gui.WriteText("oh... just a dream...", 2f);
+            gui.WriteText("ohh... just a dream...", 2f);
             player.SetHasControl(true);
         });
 
@@ -27,5 +30,10 @@ public class CorridorStartSequence : MonoBehaviour
         {
             gui.WriteText("I should still turn that light off", 2f);
         });
+    }
+
+    public void VocalizeCorridorEntry()
+    {
+        gui.WriteText("i have no memory of this place", 2.5f);
     }
 }

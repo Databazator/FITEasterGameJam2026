@@ -22,7 +22,7 @@ public class ChangeGravityOnceTrigger : MonoBehaviour
             _active = false;
             Debug.Log($"{other.gameObject} entered, switching gravity");
 
-            Player.Movement.SetGravity(NewGravity);
+            Player.Movement.SetGravity(NewGravity, true);
         }
     }
 }

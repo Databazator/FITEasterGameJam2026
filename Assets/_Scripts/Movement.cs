@@ -65,6 +65,8 @@ public class Movement : MonoBehaviour
     public Vector3 SetJumpVelocity(Vector3 velo) => _jumpVelocity = velo;
     public PlayerInput CurrentInput => _currentInput;
 
+    private AudioSFXPlayer _sfxPlayer;
+
     [Header("MovementStates")]
     private MovementStateMachine _stateMachine = new MovementStateMachine();
     public MovementStateMachine StateMachine => _stateMachine;
@@ -106,6 +108,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        _sfxPlayer = AudioSFXPlayer.Instance;
         SetGravity(Physics.gravity);
         _targetUp = _currentGravity * -1f;
         CurrentUpTarget = _targetUp;
@@ -114,7 +117,7 @@ public class Movement : MonoBehaviour
         _stateMachine.SetState(Idle);
     }
 
-    public void SetGravity(Vector3 currentGravity)
+    public void SetGravity(Vector3 currentGravity, bool playSFX = false)
     {
         _currentGravity = currentGravity;
         CurrentGravityDebug = _currentGravity;
@@ -123,6 +126,12 @@ public class Movement : MonoBehaviour
             _targetUp = _currentGravity * -1f;
             CurrentUpTarget = _targetUp;
         }
+
+        if(playSFX)
+        {
+            _sfxPlayer?.PlayGravityChange();
+        }
+
     }
 
     public void SetToInAttractorZone()

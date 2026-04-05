@@ -5,14 +5,21 @@ public class DreamStartSequence : MonoBehaviour
 {
     GUIManager gui;
     PlayerController player;
+    AudioManager audioMngr;
+
+    public AudioClip AmbientClip;
+    public AudioClip DangerClip;
 
     public float BlinkOpenDuration = 2.5f;
     void Start()
     {
+        audioMngr = AudioManager.Instance;
         gui = GUIManager.Instance;
         player = FindAnyObjectByType<PlayerController>();
 
         player.SetHasControl(false);
+        audioMngr.PlayAmbient(AmbientClip, 0.2f);
+        audioMngr.SetDangerClip(DangerClip);
 
         DOVirtual.DelayedCall(1f, () =>
         {
@@ -30,7 +37,7 @@ public class DreamStartSequence : MonoBehaviour
 
         DOVirtual.DelayedCall(BlinkOpenDuration, () => gui.WriteText("uhh...is it the middle of the night?", 2f));
         
-        DOVirtual.DelayedCall(BlinkOpenDuration + 5f, () =>
+        DOVirtual.DelayedCall(BlinkOpenDuration + 4.5f, () =>
         {
             gui.WriteText("did I leave a light on?", 2f);
             player.SetHasControl(true);
@@ -44,7 +51,8 @@ public class DreamStartSequence : MonoBehaviour
 
     public void TextVocalizeDissolve()
     {
-        DOVirtual.DelayedCall(1.5f, () => gui.WriteText("What the ...", 2f));
+        DOVirtual.DelayedCall(1.75f, () => gui.WriteText("What the ...", 2f));
     }
+       
   
 }

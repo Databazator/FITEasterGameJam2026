@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CorridorOpenLastDoorTrigger : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CorridorOpenLastDoorTrigger : MonoBehaviour
     public float GlowFadeDuration;
     public float DoorOpenDuration = 2f;
     private Material GlowMaterial;
+    public UnityEvent OnTriggerEvent;
 
     private void Start()
     {
@@ -17,8 +19,9 @@ public class CorridorOpenLastDoorTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log($"collided with {other.gameObject}");
-
+        
         EndDoor.OpenDoor(DoorOpenDuration);
         GlowMaterial.DOColor(new Color(0f, 0f, 0f, 0f), GlowFadeDuration).SetEase(Ease.InQuad);
+        OnTriggerEvent.Invoke();
     }
 }

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,9 +13,12 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
     public Light MainLight;
     public NightmareController NightmareController;
     //public GameObject MainLightGO;
-    
+
+    public AudioClip SpaceAmbience;
+
     private List<Material> DissolveMaterials = new List<Material>();
     private Collider FloorCollider;
+    private GUIManager gui;
 
     public float DissolveDuration = 3f;
     public float FloorDisableColliderDuration = 2.3f;
@@ -30,7 +34,12 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
         foreach (GameObject go in DissolveGOs)
         {
             DissolveMaterials.Add(go.GetComponent<Renderer>().material);
-        }       
+        }
+    }
+
+    private void Start()
+    {
+        gui = GUIManager.Instance;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -55,19 +64,28 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
             FloorCollider.enabled = false;
             Player.Movement.SetToInAttractorZone();
             DOVirtual.DelayedCall(DisableRoomOffset, () => Bedroom.SetActive(false));
+            AudioManager.Instance.PlayAmbient(SpaceAmbience, 0.4f);
         });
 
-        DOVirtual.DelayedCall(DissolveDelay + FloorDisableColliderDuration + OpenDoorDelay, () =>
+        DOVirtual.DelayedCall(DissolveDelay + FloorDisableColliderDuration + NightmareAppearDelay, () =>
+        {
+            NightmareController.StartNightmare();
+        });
+
+        DOVirtual.DelayedCall(DissolveDelay + FloorDisableColliderDuration + NightmareAppearDelay + NightmareController.NightmareAppearDuration + 5f, () =>
         {
             ExitDoor.OpenDoor(OpenDoorDuration);
+            AudioSFXPlayer.Instance.PlayDoorOpenClip();
 
             //MainLightGO.SetActive(true);
             MainLight.gameObject.SetActive(true);
             MainLight.intensity = 0f;
             MainLight.DOIntensity(2f, OpenDoorDuration).SetEase(Ease.InOutQuad);
-
-            DOVirtual.DelayedCall(NightmareAppearDelay, () => NightmareController.StartNightmare());
+            DOVirtual.DelayedCall(2.5f, () => VocalizeLevelExitHint());
         });
-
+    }
+    public void VocalizeLevelExitHint()
+    {
+        gui.WriteText("... the light!", 2f);
     }
 }

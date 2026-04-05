@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6323492586444863108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4646795834096885844}
+  - component: {fileID: 2341310719489342380}
+  m_Layer: 0
+  m_Name: AudioSFXPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4646795834096885844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323492586444863108}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2341310719489342380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323492586444863108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037a41e53f0576b4e9b256efd995f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  SwitchClip: {fileID: 8300000, guid: 8d2df3b09f5cc2d4dab7b8f4d5d59f30, type: 3}
+  OpenDoorClip: {fileID: 8300000, guid: 5a07a55c43bf964458e1c7ac26e36d14, type: 3}
+  DoorHandleClips:
+  - {fileID: 8300000, guid: ceb5d03548554814ab1ec999dae9df19, type: 3}
+  - {fileID: 8300000, guid: 2ac0df9fca3a6ee44b22d26c14f8d03e, type: 3}
+  GravityChange: {fileID: 8300000, guid: 81dee2a1692ee654eb9c52c2c87d0c67, type: 3}

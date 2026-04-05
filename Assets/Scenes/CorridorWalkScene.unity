@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
@@ -1296,6 +1296,87 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4940921801924644882, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
   m_PrefabInstance: {fileID: 636301817436664835}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &520301552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 520301555}
+  - component: {fileID: 520301554}
+  - component: {fileID: 520301553}
+  m_Layer: 0
+  m_Name: HallwayWriteTextTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &520301553
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520301552}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 3.0894077, z: 7.9333615}
+  m_Center: {x: 0, y: 1.0447038, z: 0}
+--- !u!114 &520301554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520301552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b18f1814698d4bd4fbfc676d9cef476d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1059623261}
+        m_TargetAssemblyTypeName: CorridorStartSequence, Assembly-CSharp
+        m_MethodName: VocalizeCorridorEntry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &520301555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520301552}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.09, y: 0, z: 26.04}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &577513755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,6 +1693,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1618505776}
         m_TargetAssemblyTypeName: CorridorOpenStartDoorTrigger, Assembly-CSharp
         m_MethodName: StartOpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1653325034}
+        m_TargetAssemblyTypeName: AudioSFXPlayer, Assembly-CSharp
+        m_MethodName: PlayDoorOpenClip
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2599,18 +2692,6 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 350351597}
-        m_TargetAssemblyTypeName: Doorway, Assembly-CSharp
-        m_MethodName: OpenDoor
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 2
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2085879717}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -2722,6 +2803,30 @@ MonoBehaviour:
       - m_Target: {fileID: 948662029}
         m_TargetAssemblyTypeName: EndlessHallwayPuzzle, Assembly-CSharp
         m_MethodName: ShowSecretDoorGodray
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1653325034}
+        m_TargetAssemblyTypeName: AudioSFXPlayer, Assembly-CSharp
+        m_MethodName: PlaySwitchSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 948662029}
+        m_TargetAssemblyTypeName: EndlessHallwayPuzzle, Assembly-CSharp
+        m_MethodName: OpenSecretDoor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3312,6 +3417,7 @@ MonoBehaviour:
   PaintingRotationAmount: 1.8
   PaintingRotationDuration: 1.5
   SecretButton: {fileID: 843018044}
+  SecretDoorway: {fileID: 350351597}
   UnlockSecretAt: 5
   Paintings:
   - {fileID: 1208100898}
@@ -3461,6 +3567,34 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.041
       objectReference: {fileID: 0}
+    - target: {fileID: 3314959601388753397, guid: dbfbb449830b9264397ceaf2033cd6c5, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3314959601388753397, guid: dbfbb449830b9264397ceaf2033cd6c5, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3314959601388753397, guid: dbfbb449830b9264397ceaf2033cd6c5, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1653325034}
+    - target: {fileID: 3314959601388753397, guid: dbfbb449830b9264397ceaf2033cd6c5, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3314959601388753397, guid: dbfbb449830b9264397ceaf2033cd6c5, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayDoorHandleClip
+      objectReference: {fileID: 0}
+    - target: {fileID: 3314959601388753397, guid: dbfbb449830b9264397ceaf2033cd6c5, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioSFXPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3314959601388753397, guid: dbfbb449830b9264397ceaf2033cd6c5, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4449977240393801294, guid: dbfbb449830b9264397ceaf2033cd6c5, type: 3}
       propertyPath: m_Name
       value: Doorway (2)
@@ -3545,6 +3679,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173356a7ea0101d4fb994f0309540939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  Ambience: {fileID: 8300000, guid: a613d3d55fedbaa4994aa7b792528c84, type: 3}
+  player: {fileID: 881585022}
 --- !u!4 &1059623262
 Transform:
   m_ObjectHideFlags: 0
@@ -4013,8 +4149,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   EndDoor: {fileID: 1320200849}
   DoorGlowGO: {fileID: 240125018}
-  GlowFadeDuration: 0.75
+  GlowFadeDuration: 0.5
   DoorOpenDuration: 2
+  OnTriggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &1222604264
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5130,6 +5269,17 @@ MonoBehaviour:
   DoorGlowGO: {fileID: 1840597704}
   GlowFadeDuration: 0.75
   DoorOpenDuration: 2
+--- !u!114 &1653325034 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2341310719489342380, guid: 5f57c5151524c9442a0021233fc6d332, type: 3}
+  m_PrefabInstance: {fileID: 8855785018998816692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037a41e53f0576b4e9b256efd995f637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &1655856888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5166,6 +5316,34 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.04
       objectReference: {fileID: 0}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1653325034}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayDoorHandleClip
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioSFXPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5302999598515384462, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
       propertyPath: m_Name
       value: SecretDoorway
@@ -5185,6 +5363,34 @@ PrefabInstance:
     - target: {fileID: 6413998558898574352, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
       propertyPath: m_LocalPosition.z
       value: -5.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1653325034}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayDoorHandleClip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioSFXPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7904945958757526702, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5822,6 +6028,34 @@ PrefabInstance:
     - target: {fileID: 2497107749993420535, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
       propertyPath: m_Name
       value: Bedroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656994206025922714, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656994206025922714, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656994206025922714, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1653325034}
+    - target: {fileID: 2656994206025922714, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656994206025922714, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySwitchSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656994206025922714, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioSFXPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656994206025922714, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3884928112266941016, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
       propertyPath: m_IsActive
@@ -6838,10 +7072,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1653325034}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayDoorHandleClip
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioSFXPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914389962772085513, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6444044685960275056, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f0f051f3b4c14b145949347537c3b317, type: 2}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1653325034}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayDoorHandleClip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioSFXPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510074763241504565, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7428021719033259029, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.041
@@ -6903,6 +7193,120 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11a42cdca6b48ba4ea0c32af7fd15c64, type: 3}
+--- !u!1001 &2562044227361358205
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3388822059763609919, guid: 53737e20d276fbf45a8bdc830479b2f1, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874955479923497366, guid: 53737e20d276fbf45a8bdc830479b2f1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874955479923497366, guid: 53737e20d276fbf45a8bdc830479b2f1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874955479923497366, guid: 53737e20d276fbf45a8bdc830479b2f1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874955479923497366, guid: 53737e20d276fbf45a8bdc830479b2f1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874955479923497366, guid: 53737e20d276fbf45a8bdc830479b2f1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874955479923497366, guid: 53737e20d276fbf45a8bdc830479b2f1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874955479923497366, guid: 53737e20d276fbf45a8bdc830479b2f1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874955479923497366, guid: 53737e20d276fbf45a8bdc830479b2f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874955479923497366, guid: 53737e20d276fbf45a8bdc830479b2f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874955479923497366, guid: 53737e20d276fbf45a8bdc830479b2f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 53737e20d276fbf45a8bdc830479b2f1, type: 3}
+--- !u!1001 &8855785018998816692
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4646795834096885844, guid: 5f57c5151524c9442a0021233fc6d332, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646795834096885844, guid: 5f57c5151524c9442a0021233fc6d332, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646795834096885844, guid: 5f57c5151524c9442a0021233fc6d332, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646795834096885844, guid: 5f57c5151524c9442a0021233fc6d332, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646795834096885844, guid: 5f57c5151524c9442a0021233fc6d332, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646795834096885844, guid: 5f57c5151524c9442a0021233fc6d332, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646795834096885844, guid: 5f57c5151524c9442a0021233fc6d332, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646795834096885844, guid: 5f57c5151524c9442a0021233fc6d332, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646795834096885844, guid: 5f57c5151524c9442a0021233fc6d332, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646795834096885844, guid: 5f57c5151524c9442a0021233fc6d332, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323492586444863108, guid: 5f57c5151524c9442a0021233fc6d332, type: 3}
+      propertyPath: m_Name
+      value: AudioSFXPlayer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f57c5151524c9442a0021233fc6d332, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6910,6 +7314,8 @@ SceneRoots:
   - {fileID: 331291625}
   - {fileID: 1059623262}
   - {fileID: 846386144}
+  - {fileID: 2562044227361358205}
+  - {fileID: 8855785018998816692}
   - {fileID: 360113911}
   - {fileID: 165632921}
   - {fileID: 1840597703}
@@ -6940,3 +7346,4 @@ SceneRoots:
   - {fileID: 1222604265}
   - {fileID: 1575016425}
   - {fileID: 7647750}
+  - {fileID: 520301555}
