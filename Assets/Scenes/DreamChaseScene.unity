@@ -155,12 +155,16 @@ MonoBehaviour:
   NightmareMeshSize: 7
   NightmareLateralSpeed: 3
   NightmareAppearDuration: 3
+  NoiseVolumeChangeSpeed: 2
   NoisePlayerDistances: {x: 0, y: 80}
   DistanceNoiseVolumeRanges: {x: 0.2, y: 0}
+  LookingAtNoiseVolumeRanges: {x: 0, y: 0.4}
   NightmareSpeed: {x: -4.5, y: 0, z: 0}
   NoiseSource: {fileID: 97401284}
   globalVolume: {fileID: 832575518}
   playerCamera: {fileID: 1693142810}
+  NoiseDistanceVal: 0
+  NoiseLookAtVal: 0
 --- !u!4 &97401283
 Transform:
   m_ObjectHideFlags: 0
@@ -343,6 +347,351 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &237383682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 237383685}
+  - component: {fileID: 237383684}
+  - component: {fileID: 237383683}
+  m_Layer: 0
+  m_Name: HideWalkInstrTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &237383683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237383682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b18f1814698d4bd4fbfc676d9cef476d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SingleTimeEventTrigger
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1078426072}
+        m_TargetAssemblyTypeName: WUILabelPanel, Assembly-CSharp
+        m_MethodName: HidePanel
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &237383684
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237383682}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13.430801, y: 4.20446, z: 1}
+  m_Center: {x: 1.0556002, y: 1.6022301, z: 0}
+--- !u!4 &237383685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237383682}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.23204027, z: -0, w: 0.9727062}
+  m_LocalPosition: {x: -0.7, y: 20.4, z: -4.59}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -26.834, z: 0}
+--- !u!1 &274082008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 274082012}
+  - component: {fileID: 274082010}
+  - component: {fileID: 274082011}
+  - component: {fileID: 274082009}
+  m_Layer: 0
+  m_Name: WUI-Launch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &274082009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274082008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbb99794a504a14b8b28d576d2a688a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  Document: {fileID: 274082010}
+  StartVisible: 0
+  StartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &274082010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274082008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
+  m_PanelSettings: {fileID: 11400000, guid: 93c8bd2da25bec940ba75ed131001f7b, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 1aefe57e6ac342a418795d84e67e7b94, type: 3}
+  m_SortingOrder: 0
+  m_Position: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &274082011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274082008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68806382459959b47a2217825b2913fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  document: {fileID: 274082010}
+  LabelText: 'Jump/Interact: traverse'
+--- !u!4 &274082012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274082008}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1956383460}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &292996492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 292996496}
+  - component: {fileID: 292996495}
+  - component: {fileID: 292996494}
+  - component: {fileID: 292996493}
+  m_Layer: 0
+  m_Name: WUI-InteractInstructions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &292996493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292996492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbb99794a504a14b8b28d576d2a688a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  Document: {fileID: 292996495}
+  StartVisible: 0
+  StartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &292996494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292996492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68806382459959b47a2217825b2913fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  document: {fileID: 292996495}
+  LabelText: 'E/LClick: interact'
+--- !u!114 &292996495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292996492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
+  m_PanelSettings: {fileID: 11400000, guid: 93c8bd2da25bec940ba75ed131001f7b, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 1aefe57e6ac342a418795d84e67e7b94, type: 3}
+  m_SortingOrder: 0
+  m_Position: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
+--- !u!4 &292996496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292996492}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.24800298, z: -0, w: 0.96875936}
+  m_LocalPosition: {x: 2.29, y: 0, z: -1.18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 647775819}
+  m_LocalEulerAnglesHint: {x: 0, y: 28.719, z: 0}
+--- !u!1 &315764445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 315764449}
+  - component: {fileID: 315764448}
+  - component: {fileID: 315764447}
+  - component: {fileID: 315764446}
+  m_Layer: 0
+  m_Name: WUI-Jump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &315764446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315764445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbb99794a504a14b8b28d576d2a688a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  Document: {fileID: 315764448}
+  StartVisible: 0
+  StartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &315764447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315764445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68806382459959b47a2217825b2913fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  document: {fileID: 315764448}
+  LabelText: 'Space: jump'
+--- !u!114 &315764448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315764445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
+  m_PanelSettings: {fileID: 11400000, guid: 93c8bd2da25bec940ba75ed131001f7b, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 1aefe57e6ac342a418795d84e67e7b94, type: 3}
+  m_SortingOrder: 0
+  m_Position: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
+--- !u!4 &315764449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315764445}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.05325164, z: -0, w: 0.9985811}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 466531234}
+  m_LocalEulerAnglesHint: {x: 0, y: -6.105, z: 0}
 --- !u!1001 &338647585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -514,7 +863,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   m_Enabled: 1
-  serializedVersion: 13
+  serializedVersion: 12
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2
@@ -566,7 +915,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShapeRadius: 0
+  m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -754,6 +1103,131 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 021e3f272088350458a61c5b81f3d70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GravityAttractor
+--- !u!1 &466531233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466531234}
+  m_Layer: 0
+  m_Name: WUIPanelJump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &466531234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466531233}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.14760014, z: -0, w: 0.9890471}
+  m_LocalPosition: {x: -0.77, y: 22.29, z: 2.09}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 315764449}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -16.976, z: 0}
+--- !u!1 &589023325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 589023328}
+  - component: {fileID: 589023327}
+  - component: {fileID: 589023326}
+  m_Layer: 0
+  m_Name: ShowInteractInstrTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &589023326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589023325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b18f1814698d4bd4fbfc676d9cef476d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SingleTimeEventTrigger
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 292996493}
+        m_TargetAssemblyTypeName: WUILabelPanel, Assembly-CSharp
+        m_MethodName: ShowPanel
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 292996493}
+        m_TargetAssemblyTypeName: WUILabelPanel, Assembly-CSharp
+        m_MethodName: HidePanelWithDelay
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 4
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &589023327
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589023325}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13.430801, y: 4.20446, z: 1}
+  m_Center: {x: 1.0556002, y: 1.6022301, z: 0}
+--- !u!4 &589023328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589023325}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.35885817, z: -0, w: 0.9333921}
+  m_LocalPosition: {x: -1.86, y: 20.4, z: -0.52}
+  m_LocalScale: {x: 1.2998, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -42.06, z: 0}
 --- !u!1 &626275347
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,6 +1286,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 037a41e53f0576b4e9b256efd995f637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!1 &647775818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 647775819}
+  m_Layer: 0
+  m_Name: WUIPanelInteract
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &647775819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647775818}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.8220226, z: -0, w: 0.5694549}
+  m_LocalPosition: {x: -4.751, y: 22.576, z: 0.524}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 292996496}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -110.576, z: 0}
 --- !u!1 &773845520 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8996863949080078980, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
@@ -984,6 +1490,151 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1653603958214006108, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
   m_PrefabInstance: {fileID: 1416367343}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &937715469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 937715470}
+  m_Layer: 0
+  m_Name: WUIPanelMove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &937715470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937715469}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.99, y: 22.196, z: -1.17}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 1078426071}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1078426069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1078426071}
+  - component: {fileID: 1078426070}
+  - component: {fileID: 1078426073}
+  - component: {fileID: 1078426072}
+  - component: {fileID: 1078426074}
+  m_Layer: 0
+  m_Name: WUI-WalkInstructions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1078426070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078426069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
+  m_PanelSettings: {fileID: 11400000, guid: 93c8bd2da25bec940ba75ed131001f7b, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 1aefe57e6ac342a418795d84e67e7b94, type: 3}
+  m_SortingOrder: 0
+  m_Position: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
+--- !u!4 &1078426071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078426069}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.41461897, z: -0, w: 0.90999514}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 937715470}
+  m_LocalEulerAnglesHint: {x: 0, y: -48.991, z: 0}
+--- !u!114 &1078426072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078426069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbb99794a504a14b8b28d576d2a688a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  Document: {fileID: 1078426070}
+  StartVisible: 0
+  StartEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1078426072}
+        m_TargetAssemblyTypeName: WUILabelPanel, Assembly-CSharp
+        m_MethodName: ShowPanelWithDelay
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 9
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1078426073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078426069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68806382459959b47a2217825b2913fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  document: {fileID: 1078426070}
+  LabelText: 'W,A,S,D: walk'
+--- !u!114 &1078426074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078426069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf0b9c9e087e23489fb2361bae6e5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &1133273775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1117,6 +1768,10 @@ PrefabInstance:
     - target: {fileID: 5496244697996322390, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466440271569029224, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.6682317
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1658,7 +2313,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712484576}
   m_Enabled: 1
-  serializedVersion: 13
+  serializedVersion: 12
   m_Type: 0
   m_Color: {r: 0.6754716, g: 0.1414667, b: 0.66318756, a: 1}
   m_Intensity: 2000
@@ -1710,7 +2365,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShapeRadius: 0.025
+  m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -1837,6 +2492,54 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1518035, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1864480162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1864480164}
+  - component: {fileID: 1864480163}
+  m_Layer: 0
+  m_Name: PlaceLaunchInfoAtCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1864480163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864480162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffeb6c5ede5dd654f8a0f61b92ec99be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  DistanceFromCam: 3
+  Offset: {x: 0, y: 0, z: 0}
+  CameraTransform: {fileID: 1693142810}
+  LaunchPanel: {fileID: 274082009}
+--- !u!4 &1864480164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864480162}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1896086756 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4426147881320005454, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
@@ -1987,6 +2690,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1956383459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1956383460}
+  m_Layer: 0
+  m_Name: WUIPanelLaunch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1956383460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956383459}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 274082012}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1972589309 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6427435014803878147, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
@@ -2027,6 +2762,99 @@ Transform:
   - {fileID: 6932430321043793842}
   m_Father: {fileID: 97401283}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2056508567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2056508570}
+  - component: {fileID: 2056508569}
+  - component: {fileID: 2056508568}
+  m_Layer: 0
+  m_Name: ShowJumpInstrTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2056508568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056508567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b18f1814698d4bd4fbfc676d9cef476d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SingleTimeEventTrigger
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 315764446}
+        m_TargetAssemblyTypeName: WUILabelPanel, Assembly-CSharp
+        m_MethodName: ShowPanel
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 315764446}
+        m_TargetAssemblyTypeName: WUILabelPanel, Assembly-CSharp
+        m_MethodName: HidePanelWithDelay
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 4
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &2056508569
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056508567}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13.430801, y: 4.20446, z: 1}
+  m_Center: {x: 1.0556002, y: 1.6022301, z: 0}
+--- !u!4 &2056508570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056508567}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.23204027, z: -0, w: 0.9727062}
+  m_LocalPosition: {x: -0.9, y: 20.4, z: -4.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -26.834, z: 0}
 --- !u!1001 &2132671305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2233,6 +3061,10 @@ PrefabInstance:
     - target: {fileID: 4496744003088315748, guid: dc9598a350af1004f89fbf4b18f75275, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496744003088315748, guid: dc9598a350af1004f89fbf4b18f75275, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2523,7 +3355,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2149816003886115580, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
       propertyPath: far clip plane
-      value: 400
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: _jumpForce
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
       propertyPath: _bodyRotationSpeed
@@ -2536,6 +3372,38 @@ PrefabInstance:
     - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
       propertyPath: _launchZoneLayerMask.m_Bits
       value: 321
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: FirstCanLaunchInteractionEv.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: FirstCanLaunchInteractionEv.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: FirstCanLaunchInteractionEv.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1864480163}
+    - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: FirstCanLaunchInteractionEv.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: FirstCanLaunchInteractionEv.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: FirstCanLaunchInteractionEv.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DreamLaunchInfoShow, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: FirstCanLaunchInteractionEv.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: FirstCanLaunchInteractionEv.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8383683545372862026, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
       propertyPath: m_Name
@@ -2652,3 +3520,11 @@ SceneRoots:
   - {fileID: 882739674300066264}
   - {fileID: 97401283}
   - {fileID: 7911692196740900648}
+  - {fileID: 937715470}
+  - {fileID: 647775819}
+  - {fileID: 466531234}
+  - {fileID: 1956383460}
+  - {fileID: 237383685}
+  - {fileID: 2056508570}
+  - {fileID: 589023328}
+  - {fileID: 1864480164}

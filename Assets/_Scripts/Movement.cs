@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Movement : MonoBehaviour
 {
@@ -67,6 +69,10 @@ public class Movement : MonoBehaviour
 
     private AudioSFXPlayer _sfxPlayer;
 
+    private bool _isFirstLaunch = true;
+    public bool IsFirstLaunchableInteraction = false;
+    public UnityEvent FirstCanLaunchInteractionEv;
+
     [Header("MovementStates")]
     private MovementStateMachine _stateMachine = new MovementStateMachine();
     public MovementStateMachine StateMachine => _stateMachine;
@@ -92,6 +98,7 @@ public class Movement : MonoBehaviour
     public bool LaunchedDebug;
     //public Vector3 LaunchTargetAttractorPos;
     public Vector3 CurrentUpTarget;
+    
     
 
     void Awake()
@@ -209,12 +216,17 @@ public class Movement : MonoBehaviour
 
     public void OnLaunchStart()
     {
+        if(_isFirstLaunch)
+        {
+            _isFirstLaunch = false;
+            OnFirstLaunch();
+        }
         _rigidbody.excludeLayers = LauchIgnoreLayerMask;
 
         CamEffects.ShowSpeedlines(0.5f);
         CamEffects.SetFOV(70f, 0.25f);
 
-        _sfxPlayer?.PlayGravityChange();
+        _sfxPlayer?.PlayGravityChange(2f);
     }
 
     public void OnLaunchEnd()
@@ -225,6 +237,11 @@ public class Movement : MonoBehaviour
         SetLaunched(false);
         CamEffects.FadeSpeedlines(1.5f);
         CamEffects.UnsetFOV(1f);
+    }
+
+    public void OnFirstLaunch()
+    {
+        DOVirtual.DelayedCall(0.5f, () => GUIManager.Instance?.WriteText("whoa", 2f));
     }
 
     void OnGrounded()
@@ -245,6 +262,11 @@ public class Movement : MonoBehaviour
         {
             if (validLaunchTarget)
             {
+                if(IsFirstLaunchableInteraction)
+                {
+                    IsFirstLaunchableInteraction = false;
+                    FirstCanLaunchInteractionEv.Invoke();
+                }
                 GUIManager.Instance.ShowIndicator(true, 0f);
             }
             else
@@ -257,7 +279,7 @@ public class Movement : MonoBehaviour
         CanLaunchDebug = CanLaunch;
         LaunchedDebug = Launched;
         //Debug.Log("Launch Target Visible: " + validLaunchTarget);
-        if(_currentInput.jumpHeld && IsGrounded && _canLaunch && validLaunchTarget && IsInGravityAttractionZone)
+        if((_currentInput.jumpHeld || _currentInput.interactButtonPressed) && IsGrounded && _canLaunch && validLaunchTarget && IsInGravityAttractionZone)
         {
             _canLaunch = false;
             _rigidbody.linearVelocity = CamTransform.forward * _launchForce;

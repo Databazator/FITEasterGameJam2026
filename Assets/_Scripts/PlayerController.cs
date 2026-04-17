@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         GravityHandler?.UpdateHandler();
         CameraLook.CameraLook(input.look);
         Movement.UpdateMovement(input);
-        PlayerInteractor.UpdateInteractor(input.primaryButtonPressed);
+        PlayerInteractor.UpdateInteractor(input.interactButtonPressed);
     }
     
     public void TeleportTo(Vector3 position)

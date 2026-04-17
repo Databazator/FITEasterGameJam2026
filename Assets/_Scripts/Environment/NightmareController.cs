@@ -15,8 +15,10 @@ public class NightmareController : MonoBehaviour
 
     public float NightmareAppearDuration = 4f;
 
+    public float NoiseVolumeChangeSpeed = 2f;
     public Vector2 NoisePlayerDistances;
     public Vector2 DistanceNoiseVolumeRanges;
+    public Vector2 LookingAtNoiseVolumeRanges;
 
     public Vector3 NightmareSpeed;
     private bool _nightmareRunning = false;
@@ -26,6 +28,9 @@ public class NightmareController : MonoBehaviour
     public Volume globalVolume;
     private FilmGrain filmGrain;
     public Transform playerCamera;
+
+    public float NoiseDistanceVal;
+    public float NoiseLookAtVal;
 
     void Start()
     {
@@ -86,26 +91,36 @@ public class NightmareController : MonoBehaviour
             NightmareMesh.transform.LookAt(Player.transform.position);
 
             // update noise
+            // how much are we looking at the nighmare
+            float cameraLookFac = Vector3.Dot(NightmareMesh.transform.forward * -1f, playerCamera.forward);
+           
             //distance noise
             float distance = Vector3.Distance(this.transform.position, Player.transform.position);
             float distFac = Mathf.Clamp(distance, NoisePlayerDistances.x, NoisePlayerDistances.y) / NoisePlayerDistances.y;
-            float noiseVal = Mathf.Lerp(DistanceNoiseVolumeRanges.x, DistanceNoiseVolumeRanges.y, distFac);
-            NoiseSource.volume = noiseVal;
+            float noiseDistanceVal = Mathf.Lerp(DistanceNoiseVolumeRanges.x, DistanceNoiseVolumeRanges.y, distFac);
+            NoiseDistanceVal = noiseDistanceVal;
+
+            float noiseCamLookFac = Mathf.Clamp(cameraLookFac, 0f, 0.5f) * 2f;
+            float noiseCamLookVal = Mathf.Lerp(LookingAtNoiseVolumeRanges.x, LookingAtNoiseVolumeRanges.y, noiseCamLookFac);
+            
+            NoiseLookAtVal = noiseCamLookVal;
+
+            float currentTarget = noiseDistanceVal > noiseCamLookVal ? noiseDistanceVal : noiseCamLookVal;
+            NoiseSource.volume = Mathf.MoveTowards(NoiseSource.volume, currentTarget, NoiseVolumeChangeSpeed * Time.deltaTime);
+
             float pitch = 1f;
-            if (distance <= 20f)
+            if (distance <= 30f)
             {
-                float fac = distance / 20f;
+                float fac = distance / 30f;
                 pitch = Mathf.Lerp(1.5f, 1f, fac);
             }
             NoiseSource.pitch = pitch;
 
             // update film grain
-            float distGrainVal = Mathf.Lerp(0.7f, 0f, distFac);
-            float cameraLookFac= Vector3.Dot(NightmareMesh.transform.forward * -1f, playerCamera.forward);
+            float distGrainVal = Mathf.Lerp(0.7f, 0.0f, distFac);            
             float cameraLookGrainVal = Mathf.Clamp(cameraLookFac, 0f, 0.5f) * 2f;
 
-            
-            filmGrain.intensity.value = cameraLookGrainVal > distGrainVal ? cameraLookGrainVal : distGrainVal;            
+            filmGrain.intensity.value = cameraLookGrainVal > distGrainVal ? cameraLookGrainVal : distGrainVal;
         }
     }
 

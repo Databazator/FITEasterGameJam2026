@@ -10,7 +10,7 @@ public struct PlayerInput
     public bool sprint;
     public bool crouch;
     public bool escapePressed;
-    public bool primaryButtonPressed;
+    public bool interactButtonPressed;
     public bool primaryButtonHeld;
     public bool primaryButtonReleased;
     public bool secondaryButtonPressed;

@@ -29,7 +29,7 @@ public class InputProvider : MonoBehaviour
             crouch = crouchAction.ReadValue<float>() > ActionPressedThreshold,
             sprint = sprintAction.ReadValue<float>() > ActionPressedThreshold,
             escapePressed = escapeAction.WasPressedThisFrame(),
-            primaryButtonPressed = primaryButtonAction.WasPressedThisFrame(),
+            interactButtonPressed = primaryButtonAction.WasPressedThisFrame(),
             //primaryButtonHeld = primaryButtonAction.IsInProgress(),
             //primaryButtonReleased = primaryButtonAction.WasReleasedThisFrame(),
             //secondaryButtonPressed = secondaryButtonAction.WasPressedThisFrame(),

@@ -1,0 +1,12 @@
+:root {
+}
+
+.labelStyle {
+    color: rgb(199, 214, 224);
+    font-size: 60px;
+    padding-top: 0;
+    height: auto;
+    white-space: pre-wrap;
+    -unity-font-definition: url("project://database/Assets/UI/SpaceGrotesk-VariableFont_wght.ttf?fileID=12800000&guid=39466b8f2c1bd3941b6b1c128f57e30b&type=3#SpaceGrotesk-VariableFont_wght");
+    -unity-font-style: bold;
+}

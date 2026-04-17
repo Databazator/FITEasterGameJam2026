@@ -8,7 +8,8 @@ public class GravityAttractionHandler : MonoBehaviour
 
     private void Awake()
     {
-        var attractors = FindObjectsByType<GravityAttractor>();
+        
+        var attractors = FindObjectsByType<GravityAttractor>(FindObjectsSortMode.None);
         foreach (var attractor in attractors)
         {
             if(!Attractors.Contains(attractor))

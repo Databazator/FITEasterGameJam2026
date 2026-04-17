@@ -49,8 +49,8 @@ public class AudioSFXPlayer : MonoBehaviour
         audioManager.PlaySFX(rndClip, 0.8f);
     }
 
-    public void PlayGravityChange()
+    public void PlayGravityChange(float volume = 1f)
     {
-        audioManager.PlaySFX(GravityChange);
+        audioManager.PlaySFX(GravityChange, volume);
     }
 }

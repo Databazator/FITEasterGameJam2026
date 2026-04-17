@@ -70,6 +70,7 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
         DOVirtual.DelayedCall(DissolveDelay + FloorDisableColliderDuration + NightmareAppearDelay, () =>
         {
             NightmareController.StartNightmare();
+            Player.Movement.IsFirstLaunchableInteraction = true;
         });
 
         DOVirtual.DelayedCall(DissolveDelay + FloorDisableColliderDuration + NightmareAppearDelay + NightmareController.NightmareAppearDuration + 5f, () =>
