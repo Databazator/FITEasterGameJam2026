@@ -45,6 +45,11 @@ public class WUILabelPanel : MonoBehaviour
         DOVirtual.DelayedCall(delay, () => HidePanel(1f));
     }
 
+    public void DisablePanelWithDelay(float delay)
+    {
+        DOVirtual.DelayedCall(delay, () => this.gameObject.SetActive(false));
+    }
+
     public void ShowPanel(float duration)
     {
         if (!_visible)

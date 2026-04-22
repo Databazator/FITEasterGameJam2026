@@ -241,12 +241,12 @@ public class Movement : MonoBehaviour
 
     public void OnFirstLaunch()
     {
-        DOVirtual.DelayedCall(0.5f, () => GUIManager.Instance?.WriteText("whoa", 2f));
+        DOVirtual.DelayedCall(1f, () => GUIManager.Instance?.WriteText("whoa", 2f));
     }
 
     void OnGrounded()
     {
-        Debug.Log("OnGrounded");
+        //Debug.Log("OnGrounded");
         _canJump = true;
         _launched = false;
         _camEffects.ShakeCamera(0.75f, 0.15f);

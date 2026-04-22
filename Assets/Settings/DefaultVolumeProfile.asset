@@ -468,6 +468,7 @@ MonoBehaviour:
   - {fileID: -6288072647309666549}
   - {fileID: 7518938298396184218}
   - {fileID: -1410297666881709256}
+  - {fileID: 8575815931699658757}
 --- !u!114 &853819529557874667
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -923,6 +924,27 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   scale:
+    m_OverrideState: 1
+    m_Value: 1
+--- !u!114 &8575815931699658757
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811a26594066b4a409de0efe026b2dee, type: 3}
+  m_Name: FogEffectSettings
+  m_EditorClassIdentifier: Assembly-CSharp::FogEffectSettings
+  active: 1
+  ExcludeObjectMask:
+    m_OverrideState: 1
+    m_Value:
+      serializedVersion: 2
+      m_Bits: 0
+  FogDensity:
     m_OverrideState: 1
     m_Value: 1
 --- !u!114 &9001657382290151224

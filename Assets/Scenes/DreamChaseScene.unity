@@ -14,17 +14,17 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.19999999, g: 0.19999999, b: 0.19999999, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.005
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.381586, g: 0.4075183, b: 0.46226418, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientIntensity: 2.19
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 860a66ca4259b384f9ec01b687f71c3c, type: 2}
   m_HaloStrength: 0.5
@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: ff5fd2e8fc3dd1746b363e0bd9a208e1, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 274082010}
   - component: {fileID: 274082011}
   - component: {fileID: 274082009}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WUI-Launch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1729,6 +1729,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlowingDoorway
       objectReference: {fileID: 0}
+    - target: {fileID: 2050204915723536289, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822583518766381244, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467316811403595621, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420417853066933558, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682633550098383835, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822594191938391271, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822594191938391271, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887755704911238263, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316525784562413895, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5496244697996322390, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.069992065
@@ -1769,9 +1805,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6073744380269200659, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073744380269200659, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6466440271569029224, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.6682317
+      value: 2.6983826
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466440271569029224, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3675
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511170587768298861, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8179283234717451012, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739583884446987030, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984333128228298577, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1895,7 +1959,7 @@ GameObject:
   - component: {fileID: 1339249852}
   - component: {fileID: 1339249854}
   - component: {fileID: 1339249853}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2166,6 +2230,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4949657398800505333, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
   m_PrefabInstance: {fileID: 1416367343}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1553648583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1553648585}
+  - component: {fileID: 1553648584}
+  m_Layer: 0
+  m_Name: FogVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1553648584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553648583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: bcce9ee16b716b245874c230cd103035, type: 2}
+--- !u!4 &1553648585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553648583}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.57554555, y: 2.568083, z: 6.526952}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1575137987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1002961878455679261, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
@@ -2632,6 +2745,7 @@ MonoBehaviour:
   ExitDoor: {fileID: 1331992255}
   MainLight: {fileID: 410087040}
   NightmareController: {fileID: 97401282}
+  DoorGlowGO: {fileID: 1994739482}
   SpaceAmbience: {fileID: 8300000, guid: 7441fac695a088246a252f0324df3cb5, type: 3}
   DissolveDuration: 3
   FloorDisableColliderDuration: 2.3
@@ -2727,6 +2841,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6427435014803878147, guid: 66ce0894a3f01134b9ee6c9e11919798, type: 3}
   m_PrefabInstance: {fileID: 1416367343}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1994739482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6073744380269200659, guid: e8f3432dabe75964cba14e54f547d2c1, type: 3}
+  m_PrefabInstance: {fileID: 1331992254}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1995601169
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,7 +2855,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1995601170}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: NightmareMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3003,7 +3122,7 @@ GameObject:
   - component: {fileID: 7929189957428110996}
   - component: {fileID: 6949802247734527894}
   - component: {fileID: 6004754241926786709}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Circ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3150,7 +3269,7 @@ GameObject:
   - component: {fileID: 6326479852024419593}
   - component: {fileID: 1472349310016587869}
   - component: {fileID: 1265138944943339993}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Circ.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3355,7 +3474,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2149816003886115580, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
       propertyPath: far clip plane
-      value: 200
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149816003886115580, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.40392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149816003886115580, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149816003886115580, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.22745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 5896782752261119106, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5896782752261119106, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
       propertyPath: _jumpForce
@@ -3404,6 +3543,14 @@ PrefabInstance:
     - target: {fileID: 6070018869062066096, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
       propertyPath: FirstCanLaunchInteractionEv.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224244698581725803, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224244698581725803, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8383683545372862026, guid: 21e2e2a79e0e8094c8b291ffce250f6d, type: 3}
       propertyPath: m_Name
@@ -3490,7 +3637,7 @@ GameObject:
   - component: {fileID: 6932430321043793842}
   - component: {fileID: 7640388593971213303}
   - component: {fileID: 364554533233449930}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Circ.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3528,3 +3675,4 @@ SceneRoots:
   - {fileID: 2056508570}
   - {fileID: 589023328}
   - {fileID: 1864480164}
+  - {fileID: 1553648585}

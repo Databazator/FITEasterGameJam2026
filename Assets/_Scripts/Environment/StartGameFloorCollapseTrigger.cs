@@ -12,6 +12,7 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
     public Doorway ExitDoor;
     public Light MainLight;
     public NightmareController NightmareController;
+    public GameObject DoorGlowGO;
     //public GameObject MainLightGO;
 
     public AudioClip SpaceAmbience;
@@ -35,6 +36,8 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
         {
             DissolveMaterials.Add(go.GetComponent<Renderer>().material);
         }
+
+        DoorGlowGO.SetActive(false);
     }
 
     private void Start()
@@ -81,6 +84,7 @@ public class StartGameFloorCollapseTrigger : MonoBehaviour
             //MainLightGO.SetActive(true);
             MainLight.gameObject.SetActive(true);
             MainLight.intensity = 0f;
+            DoorGlowGO.SetActive(true);
             MainLight.DOIntensity(2f, OpenDoorDuration).SetEase(Ease.InOutQuad);
             DOVirtual.DelayedCall(2.5f, () => VocalizeLevelExitHint());
         });

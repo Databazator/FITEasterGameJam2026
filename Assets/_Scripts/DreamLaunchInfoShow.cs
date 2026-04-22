@@ -20,6 +20,7 @@ public class DreamLaunchInfoShow : MonoBehaviour
 
         LaunchPanel.ShowPanel(0.5f);
         LaunchPanel.HidePanelWithDelay(hideInDur);
+        LaunchPanel.DisablePanelWithDelay(hideInDur + 1f);
 
     }
 }

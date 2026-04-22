@@ -8,6 +8,7 @@ public class CameraEffects : MonoBehaviour
 
     public ParticleSystem SpeedlinesParticleSys;
     private Material _speedlinesMaterial;
+    private ParticleSystemRenderer _particlesRenderer;
 
     private float _startFOV;
     public float StartFOV => _startFOV;
@@ -15,6 +16,8 @@ public class CameraEffects : MonoBehaviour
     private Tweener _fovTweener;
     private Tweener _shakeTweener;
     private Tweener _speedlinesTweener;
+
+    private Tweener _hideSpeedLinesTweener;
 
     private void Start()
     {
@@ -24,11 +27,12 @@ public class CameraEffects : MonoBehaviour
         if (!SpeedlinesParticleSys) Debug.LogWarning("SpeedlinesSystem not set");
         else
         {
-            var renderer = SpeedlinesParticleSys.GetComponent<ParticleSystemRenderer>();
-            _speedlinesMaterial = renderer.material;
+            _particlesRenderer = SpeedlinesParticleSys.GetComponent<ParticleSystemRenderer>();
+            _speedlinesMaterial = _particlesRenderer.material;
             Color transparent = _speedlinesMaterial.color;
             transparent.a = 0f;
             _speedlinesMaterial.color = transparent;
+            _particlesRenderer.enabled = false;
         }
     }
 
@@ -60,12 +64,14 @@ public class CameraEffects : MonoBehaviour
 
     public void ShowSpeedlines(float duration)
     {
+        _particlesRenderer.enabled = true;
         SetSpeedlinesOpacity(1f, duration);
     }
 
     public void FadeSpeedlines(float duration)
     {
         SetSpeedlinesOpacity(0f, duration);
+        DOVirtual.DelayedCall(duration, () => _particlesRenderer.enabled = false);
     }
 
     void SetSpeedlinesOpacity(float value, float duration)
