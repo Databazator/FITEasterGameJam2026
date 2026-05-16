@@ -20,7 +20,7 @@ public class NightmareController : MonoBehaviour
     public Vector2 DistanceNoiseVolumeRanges;
     public Vector2 LookingAtNoiseVolumeRanges;
 
-    public Vector3 NightmareSpeed;
+    public float NightmareSpeed;
     private bool _nightmareRunning = false;
 
     public AudioSource NoiseSource;
@@ -58,7 +58,6 @@ public class NightmareController : MonoBehaviour
 
         //noise crackles
         Sequence noise = DOTween.Sequence();
-
         //float volume = 0.5f;
         noise.Append(DOTween.To(() => NoiseSource.volume, (float v) => NoiseSource.volume = v, 0.5f, 0.15f));
         noise.Append(DOTween.To(() => NoiseSource.volume, (float v) => NoiseSource.volume = v, 0f, 0.15f)).SetDelay(0.25f);
@@ -80,11 +79,18 @@ public class NightmareController : MonoBehaviour
     {
         if (_nightmareRunning)
         {
-            this.transform.position += NightmareSpeed * Time.deltaTime;
-            Vector3 targetYZ = Player.transform.position;
-            targetYZ.x = this.transform.position.x;
-            Vector3 YZmove = (targetYZ - this.transform.position).normalized * NightmareLateralSpeed * Time.deltaTime;
-            this.transform.position += YZmove;
+            Vector3 moveVector = (Player.transform.position - transform.position).normalized;
+            Vector3 movePerp = new Vector3(0, moveVector.z, -moveVector.y).normalized;
+
+            this.transform.position += moveVector * NightmareSpeed * Time.deltaTime;
+
+            Vector3 lateralMoveVector = Quaternion.AngleAxis(1, moveVector) * movePerp;
+            this.transform.position += lateralMoveVector * NightmareLateralSpeed * Time.deltaTime;
+            //this.transform.position += NightmareSpeed * Time.deltaTime;
+            //Vector3 targetYZ = Player.transform.position;
+            //targetYZ.x = this.transform.position.x;
+            //Vector3 YZmove = (targetYZ - this.transform.position).normalized * NightmareLateralSpeed * Time.deltaTime;
+            //this.transform.position += YZmove;
 
             // update light
             NightmareLight.transform.LookAt(Player.transform.position);
@@ -127,6 +133,6 @@ public class NightmareController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.purple;
-        Gizmos.DrawLine(transform.position, transform.position + NightmareSpeed);
+        Gizmos.DrawLine(transform.position, transform.position + (Player.transform.position - transform.position).normalized * NightmareSpeed);
     }
 }

@@ -9,6 +9,7 @@ public class WUITextSetter : MonoBehaviour
     private Label _textLabel;
     public string LabelText;
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
         if(document != null && !EditorApplication.isCompiling && !EditorApplication.isPlayingOrWillChangePlaymode)
@@ -27,7 +28,7 @@ public class WUITextSetter : MonoBehaviour
             }
         }
     }
-
+#endif
     private void Awake()
     {
         _textLabel = document.rootVisualElement.Q("Label") as Label;

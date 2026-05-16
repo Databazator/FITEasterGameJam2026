@@ -7,13 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NightmareEyeLines
-  m_Shader: {fileID: -6465566751694194690, guid: 3a1a44a10b3dfb34aadc7ffdc736f34a, type: 3}
+  m_Name: LightshaftCardVertical
+  m_Shader: {fileID: -6465566751694194690, guid: 78fa4a589d0f29b4bb4ce1c2165e1a59, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _ALPHATEST_ON
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -39,21 +38,26 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 0.5
-    - _DissolveSize: 1.57
-    - _DissolveSubtract: 0.03
-    - _LinesStepEdge1: 2.17
-    - _LinesStepEdge2: -0.19
+    - _AlphaMult: 0.04
+    - _FadeDistanceMax: 6
+    - _FadeDistanceMin: 1.5
+    - _FadeDotProductMax: 0.45
+    - _FadeDotProductMin: 0.22
+    - _NoiseAlphaMult: 0.24
+    - _NoiseScale: 11.9
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WarpSpeed: 0.02
-    - _WarpStrength: 0.03
+    - _Rotation: 2.23
+    - _ScrollSpeed: 0.09
+    - _Softness: 0.23
     m_Colors:
-    - _Color: {r: 0.65882355, g: 0.16862746, b: 0.6313726, a: 1}
-    - _ScrollSpeed: {r: 0.02, g: -0.1, b: 0, a: 0}
+    - _Color: {r: 0.46915573, g: 0.66712403, b: 1.1701295, a: 1}
+    - _Offset: {r: -0.33, g: 0, b: 0, a: 0}
+    - _PlayerPos: {r: 0, g: 0, b: 6.5, a: 0}
+    - _Tiling: {r: 0.71, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &5187593760802174816
+--- !u!114 &8121694022562390269
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

@@ -7,14 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NightmareEyeLines
-  m_Shader: {fileID: -6465566751694194690, guid: 3a1a44a10b3dfb34aadc7ffdc736f34a, type: 3}
+  m_Name: DissolveWardrobe
+  m_Shader: {fileID: -6465566751694194690, guid: 725093277c6cdba40aaeb4f6ca5e7dc9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _ALPHATEST_ON
-  m_LightmapFlags: 4
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -39,21 +38,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 0.5
-    - _DissolveSize: 1.57
-    - _DissolveSubtract: 0.03
-    - _LinesStepEdge1: 2.17
-    - _LinesStepEdge2: -0.19
+    - _Dissolve: 0
+    - _EdgeThickness: 0.05
+    - _NoiseScale: 16.79
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WarpSpeed: 0.02
-    - _WarpStrength: 0.03
+    - _Smoothness: 0.234
     m_Colors:
-    - _Color: {r: 0.65882355, g: 0.16862746, b: 0.6313726, a: 1}
-    - _ScrollSpeed: {r: 0.02, g: -0.1, b: 0, a: 0}
+    - _Color: {r: 0.40951404, g: 0.38692594, b: 0.4433962, a: 1}
+    - _EdgeColor: {r: 0.14117648, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &5187593760802174816
+--- !u!114 &4742260510578135855
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
